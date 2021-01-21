@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package mira;
+
+option optimize_for = SPEED;
+
+import "types.proto";
+import "joint.proto";
+
+message SimWorld {
+    repeated Assembly simObjects = 1;
+}
+
+/*
+* Assembly
+* Base Design to be interacted with
+*/
+message Assembly {
+    // Basic information (name, Author, etc)
+    Info info = 1;
+    // All of the data in the assembly
+    AssemblyData data = 2;
+    // Can it be effected by the simulation dynamically
+    bool dynamic = 3;
+    // Overall physical data of the assembly
+    PhysicalProperties physicalData = 4;
+    // The Design hierarchy represented by Part Refs
+    Leaf design_hierarchy = 5;
+    // The Joint hierarchy for compound shapes
+    Leaf joint_hierarchy = 6;
+}
+
+// All of the data to construct the Assembly
+message AssemblyData {
+    // Map of the Exported Joints
+    map<string, Joint> joints = 1;
+    // Map of the Exported Part Definitions
+    map<string, PartDefinition> partdefs = 2;
+    // Map of the Exported Parts that make up the object
+    map<string, Part> parts = 3;
+    // Map of the exported Visual Appearances
+    map<string, Appearance> appearances = 4;
+    // Map of the exported Physical Materials
+    map<string, Material> materials = 5;
+}
+
+/**
+* Part Definition
+* Unique Definition of a part that can be replicated.
+* Useful for keeping the object counter down in the scene.
+*/
+message PartDefinition {
+    Info info = 1;
+    // Physical data associated with Part
+    PhysicalProperties physicalData = 2;
+    // Bodies to populate part
+    repeated Body bodies = 3;
+}
+
+/*
+* Part
+* Represents a object that does not have to be unique
+* Can be an override for an existing definition
+*/
+message Part {
+    Info info = 1;
+    // Reference to the Part Definition defined in Assembly Data
+    string definitionRef = 2;
+    // Overriding the object transform (moves the part from the def)
+    Transform transform = 3;
+    // Reference to the phyiscal materials of the object
+    repeated string materials = 4;
+    // Design children in hierarchy
+    repeated string children = 5;
+    // Joints that interact with this element
+    repeated string joints = 6;
+}
+
+/* 
+* Body object
+* Can contain a TriangleMesh or Collection of Faces.
+* Must be unique in the context of the Assembly.
+*/
+message Body {
+    Info info = 1;
+    // Reference to Part Definition
+    string part_ref = 2;
+    // Triangle Mesh for rendering
+    TriangleMesh triangle_mesh = 3;
+}
+
+message TriangleMesh {
+    Info info = 1;
+    // Is this object a Face ? (Does it have volume)
+    bool isFace = 2;
+    // Rendered Appearance properties referenced from Assembly Data
+    string appearance = 3;
+    // Tri Mesh Verts
+    repeated Vector_f verts = 4;
+    // Tri Mesh Normals
+    repeated Vector_i32 normals = 5; 
+    // Tri Mesh uv Mapping
+    repeated Vector2_i32 uv = 6;
+    // Tri Mesh indicies (Vert Map)
+    repeated Vector_i32 indices = 7;
+}
