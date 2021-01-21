@@ -1,1 +1,7 @@
-libs
+*
+!.gitignore
+!*.proto
+!REAMDE.md
+!LICENCE
+!*.gitkeep
+!*/
