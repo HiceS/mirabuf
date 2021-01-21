@@ -81,3 +81,7 @@ go, c#, and swift have additional dependencies
 #### C#
 
 ` protoc -I=. --csharp_out=./libs/c# ./*.proto `
+
+#### Swift
+
+` protoc -I=. --swift_out=./libs/swift ./*.proto `
