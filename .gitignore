@@ -4,4 +4,9 @@
 !REAMDE.md
 !LICENCE
 !*.gitkeep
+
+# python
+!libs/python/setup.py
+!libs/python/MANIFEST.in
+
 !*/
