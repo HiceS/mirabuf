@@ -1,4 +1,4 @@
-# Mira 3D Format
+# Mira 3D Format  <a href="https://github.com/HiceS/mirabuf/workflows/BuildProto">![BuildProto](https://github.com/HiceS/mirabuf/workflows/BuildProto/badge.svg)</a>
 Open source file definition for storing rendering and physical data from 3D model assemblies.
 
 ## Data Structure
