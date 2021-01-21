@@ -1,0 +1,24 @@
+name: BuildProto
+  
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: arduino/setup-protoc@v1
+        with:
+          version: '3.x'
+
+      # Runs a single command using the runners shell
+      - name: Build Python Libs
+        run:  |
+           protoc -I=. --python_out=./libs/python ./*.proto
+           ls ./libs/python
