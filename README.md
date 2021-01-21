@@ -54,7 +54,30 @@ As good general practice it will be instrumental to acknowledge the several ways
 
 ## Building
 
+### Build All
+
+` protoc -I=. --python_out=./libs/python --java_out=./libs/java --cpp_out=./libs/cpp ./*.proto `
+
+go, c#, and swift have additional dependencies
+
+
 #### Python
 
-` protoc -I=. --python_out=./libs/python ./*.proto ` -> builds to the lib/python folder
+` protoc -I=. --python_out=./libs/python ./*.proto `
 
+#### Go
+
+` go install google.golang.org/protobuf/cmd/protoc-gen-go `
+` protoc -I=. --go_out=./libs/go ./*.proto ` 
+
+#### Java
+
+` protoc -I=. --java_out=./libs/java ./*.proto `
+
+#### CPP
+
+` protoc -I=. --cpp_out=./libs/cpp ./*.proto `
+
+#### C#
+
+` protoc -I=. --csharp_out=./libs/c# ./*.proto `
