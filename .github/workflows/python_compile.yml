@@ -21,6 +21,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build Python Libs
         run:  |
-           ls .
            protoc -I=. --python_out=./libs/python ./*.proto
            ls ./libs/python
