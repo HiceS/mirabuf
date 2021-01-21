@@ -18,8 +18,21 @@ jobs:
         with:
           version: '3.x'
 
-      # Runs a single command using the runners shell
-      - name: Build Python Libs
+      - name: Python Libs
         run:  |
-           protoc -I=. --python_out=./libs/python --java_out=./libs/java --cpp_out=./libs/cpp ./*.proto
-           ls ./libs/python
+           protoc -I=. --python_out=./libs/python ./*.proto
+           ls ./libs/python -R
+
+      - name: Cpp Libs
+        run:  |
+           protoc -I=. --cpp_out=./libs/cpp ./*.proto
+           ls ./libs/cpp -R
+
+      - name: Java Libs
+        run:  |
+           protoc -I=. --java_out=./libs/java ./*.proto
+           ls ./libs/java -R
+
+      - name: Print Libs
+        run:  |
+           ls ./libs -R
