@@ -80,7 +80,7 @@ message Color {
     // blue
     int32 B = 3;
     // alpha
-    int32 opacity = 4;
+    int32 A = 4;
 }
 
 // Axis Enum
