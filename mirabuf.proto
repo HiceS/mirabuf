@@ -6,6 +6,7 @@ option optimize_for = SPEED;
 
 import "types.proto";
 import "joint.proto";
+import "material.proto";
 
 message SimWorld {
     repeated Assembly simObjects = 1;

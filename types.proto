@@ -13,15 +13,16 @@ message Leaf {
 }
 
 message Vector2_i32 {
-    int32 x = 1;
-    int32 y = 2;
+    sint32 x = 1;
+    sint32 y = 2;
 }
 
+// This is signed to represent negative Vectors in the case where it's used
 message Vector_i32 {
-    int32 x = 1;
-    int32 y = 2;
-    int32 z = 3;
-    int32 w = 4;
+    sint32 x = 1;
+    sint32 y = 2;
+    sint32 z = 3;
+    sint32 w = 4;
 }
 
 message Vector_f {
@@ -63,22 +64,11 @@ message Transform {
     Rotation rotation = 3;
 }
 
+// This is only positive rotation
 message Rotation {
     int32 euler_x = 1;
     int32 euler_y = 2;
     int32 euler_z = 3;
-}
-
-message Appearance {
-    Color albedo = 1;
-    float roughness = 2;
-    float metallic = 3;
-    float specular = 4;
-}
-
-message Material {
-    Info info = 1;
-    double friction = 2;
 }
 
 // RGBA in expanded form 0-255
