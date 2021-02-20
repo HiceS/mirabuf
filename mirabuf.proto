@@ -85,9 +85,11 @@ message Part {
 message Body {
     Info info = 1;
     // Reference to Part Definition
-    string part_ref = 2;
+    string part = 2;
     // Triangle Mesh for rendering
     TriangleMesh triangle_mesh = 3;
+    // Material Reference 
+    string material = 4;
 }
 
 message TriangleMesh {
@@ -95,13 +97,13 @@ message TriangleMesh {
     // Is this object a Face ? (Does it have volume)
     bool isFace = 2;
     // Rendered Appearance properties referenced from Assembly Data
-    string appearance = 3;
-    // Tri Mesh Verts
-    repeated Vector_f verts = 4;
-    // Tri Mesh Normals
-    repeated Vector_i32 normals = 5; 
-    // Tri Mesh uv Mapping
-    repeated Vector2_i32 uv = 6;
+    string materialReference = 3;
+    // Tri Mesh Verts vec3
+    repeated float verts = 4;
+    // Tri Mesh Normals vec3
+    repeated int32 normals = 5;
+    // Tri Mesh uv Mapping vec2
+    repeated int32 uv = 6;
     // Tri Mesh indicies (Vert Map)
-    repeated Vector_i32 indices = 7;
+    repeated int32 indices = 7;
 }
