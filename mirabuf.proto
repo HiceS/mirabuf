@@ -101,7 +101,7 @@ message TriangleMesh {
     // Tri Mesh Verts vec3
     repeated float verts = 4;
     // Tri Mesh Normals vec3
-    repeated int32 normals = 5;
+    repeated float normals = 5;
     // Tri Mesh uv Mapping vec2
     repeated int32 uv = 6;
     // Tri Mesh indicies (Vert Map)
