@@ -17,7 +17,7 @@ message Appearance {
 
 message PhysicalMaterial {
 
-    enum Types {
+    enum MaterialType {
         METAL = 0; // default 
         PLASTIC = 1;
     }
@@ -39,14 +39,14 @@ message PhysicalMaterial {
 
     message Strength {
         float yield_strength = 1; // MPa
-        float tensile_strenght = 2; // MPa
+        float tensile_strength = 2; // MPa
         bool thermal_treatment = 3; // yes / no
     }
 
     message Information {
         string name = 1;
         string description = 2;
-        Types type = 3;
+        MaterialType type = 3;
         bool deformable = 4;
     }
 

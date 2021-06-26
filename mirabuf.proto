@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package mira;
+package mirabuf;
 
 option optimize_for = SPEED;
 
@@ -24,11 +24,12 @@ message Assembly {
     // Can it be effected by the simulation dynamically
     bool dynamic = 3;
     // Overall physical data of the assembly
-    PhysicalProperties physicalData = 4;
+    PhysicalProperties physical_data = 4;
     // The Design hierarchy represented by Part Refs
-    Leaf design_hierarchy = 5;
+    // The first object is a root container for all top level items
+    GraphContainer design_hierarchy = 5;
     // The Joint hierarchy for compound shapes
-    Leaf joint_hierarchy = 6;
+    GraphContainer joint_hierarchy = 6;
 }
 
 // All of the data to construct the Assembly
@@ -36,12 +37,10 @@ message AssemblyData {
     // Map of the Exported Joints
     map<string, Joint> joints = 1;
     // Map of the Exported Part Definitions
-    map<string, PartDefinition> partdefs = 2;
+    map<string, PartDefinition> part_definitions = 2;
     // Map of the Exported Parts that make up the object
     map<string, Part> parts = 3;
-    // Map of the exported Visual Appearances
-    map<string, Appearance> appearances = 4;
-    // Map of the exported Physical Materials
+    // Map of the exported Materials (physical and appearance)
     map<string, Material> materials = 5;
 }
 
@@ -53,9 +52,11 @@ message AssemblyData {
 message PartDefinition {
     Info info = 1;
     // Physical data associated with Part
-    PhysicalProperties physicalData = 2;
+    PhysicalProperties physical_data = 2;
+    // Base Transform applied
+    Transform transform = 4;
     // Bodies to populate part
-    repeated Body bodies = 3;
+    repeated Body bodies = 5;
 }
 
 /*
@@ -66,7 +67,7 @@ message PartDefinition {
 message Part {
     Info info = 1;
     // Reference to the Part Definition defined in Assembly Data
-    string definitionRef = 2;
+    string part_definition_reference = 2;
     // Overriding the object transform (moves the part from the def)
     Transform transform = 3;
     // Reference to the phyiscal materials of the object
@@ -94,16 +95,37 @@ message Body {
 
 message TriangleMesh {
     Info info = 1;
-    // Is this object a Face ? (Does it have volume)
-    bool isFace = 2;
+    // Is this object a Plane ? (Does it have volume)
+    bool has_volume = 2;
     // Rendered Appearance properties referenced from Assembly Data
-    string materialReference = 3;
+    string material_reference = 3;
+
+    oneof mesh_type {
+        Mesh mesh = 4;
+        BinaryMesh bmesh = 5;
+    }
+}
+
+// Mesh used most of the time
+message Mesh {
     // Tri Mesh Verts vec3
-    repeated float verts = 4;
+    repeated float verts = 1;
     // Tri Mesh Normals vec3
-    repeated float normals = 5;
+    repeated float normals = 2;
     // Tri Mesh uv Mapping vec2
-    repeated int32 uv = 6;
+    repeated int32 uv = 3;
     // Tri Mesh indicies (Vert Map)
-    repeated int32 indices = 7;
+    repeated int32 indices = 4;
+}
+
+// Mesh used for more effective file transfers
+message BinaryMesh {
+    // Tri Mesh Verts vec3
+    bytes verts = 1;
+    // Tri Mesh Normals vec3
+    repeated float normals = 2;
+    // Tri Mesh uv Mapping vec2
+    repeated int32 uv = 3;
+    // Tri Mesh indicies (Vert Map)
+    repeated int32 indices = 4;
 }

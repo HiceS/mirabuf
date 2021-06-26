@@ -10,3 +10,5 @@
 !libs/python/MANIFEST.in
 
 !*/
+
+build/*.proto

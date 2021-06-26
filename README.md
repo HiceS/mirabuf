@@ -54,7 +54,23 @@ As good general practice it will be instrumental to acknowledge the several ways
 
 ## Building
 
-### Build All
+### Build All - Single File
+
+#### Windows
+
+`type *.proto > build/mirabuf.proto`
+
+#### OSX
+
+`cat *.proto > build/mirabuf.proto`
+
+#### Build
+
+manually remove syntax statements and imports
+
+` protoc -I=. --python_out=./libs/python --java_out=./libs/java --cpp_out=./libs/cpp ./build/mirabuf.proto `
+
+### Build All - Seperate
 
 ` protoc -I=. --python_out=./libs/python --java_out=./libs/java --cpp_out=./libs/cpp ./*.proto `
 
@@ -85,3 +101,11 @@ go, c#, and swift have additional dependencies
 #### Swift
 
 ` protoc -I=. --swift_out=./libs/swift ./*.proto `
+
+#### Rust
+
+`cargo install protobuf-codegen`
+
+`protoc-gen-rust` -- make sure cargo is in path
+
+`protoc --rust_out ./libs/rust *.proto`

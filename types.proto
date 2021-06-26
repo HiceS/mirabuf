@@ -4,12 +4,26 @@
 syntax = "proto3";
 
 /*
-* Leaf
-* Used to define a Tree structure for Part hierarchy
+* Edge is somewhat abstract.
+* Must infer what kind of data one might expect.
 */
-message Leaf {
+
+// Each edge contains another object and arbitrary data
+message Edge {
     string value = 1;
-    repeated Leaf children = 2;
+    Node node = 2;
+}
+
+// Each proper object within the Graph - First one is Root
+message Node {
+    string value = 1;
+    repeated Edge children = 2;
+}
+
+// Top level GraphContainer
+// Contains all Graph elemebt roots within
+message GraphContainer {
+    repeated Node nodes = 1;
 }
 
 message Vector2_i32 {
@@ -25,15 +39,14 @@ message Vector_i32 {
     sint32 w = 4;
 }
 
-message Vector_f {
+message Vector3_f32 {
     float x = 1;
     float y = 2;
     float z = 3;
-    float w = 4;
 }
 
 /* The Double equivalent - storage safe */ 
-message Vector3_D {
+message Vector3_f64 {
     double x = 1;
     double y = 2;
     double z = 3;
@@ -45,21 +58,25 @@ message PhysicalProperties {
     double mass = 3; // kg
     double volume = 4; //cm^3
     double area = 5; // cm^2
-    Vector_f com = 6; // non-negative? Vec3
+    Vector3_f32 com = 6; // non-negative? Vec3
     /* add color information */
 }
 
 /* Describes the Occurrence translation from the component origin */
 // https://www.brainvoyager.com/bv/doc/UsersGuide/CoordsAndTransforms/SpatialTransformationMatrices.html#:~:text=Homogeneous%20coordinates%20(4%2Delement%20vectors,points%20and%203%2Drow%20matrices.
 message Translation {
-    Vector3_D origin = 1;
-    Vector3_D x = 2;
-    Vector3_D y = 3;
-    Vector3_D z = 4;
+    Vector3_f32 origin = 1;
+    float x = 2;
+    float y = 3;
+    float z = 4;
+}
+
+message SpatialTransformMatrix {
+    repeated float values = 1;
 }
 
 message Transform {
-    repeated double flat_matrix = 1;
+    SpatialTransformMatrix spatial_matrix = 1;
     Translation translation = 2;
     Rotation rotation = 3;
 }
@@ -99,7 +116,9 @@ message Info {
     // Generic readable name
     string name = 1;
     // GUID unique value - must always be defined
+    // since guid's have exactly 128bits could be represented with bytes[]
+    // however endian becomes an issue
     string GUID = 2;
     // Version of design iteration
-    int32 version = 3;
+    uint32 version = 3;
 }

@@ -2,6 +2,17 @@ syntax = "proto3";
 
 import "types.proto";
 
+// Describes the joint
+enum JointMotion {
+    Rigid = 0;
+    Revolute = 1;
+    Slider = 2;
+    Cylindrical= 3;
+    PinSlot = 4;
+    Planar = 5;
+    BallJoint = 6;
+}
+
 // Describes a Joint in the Fusion Context that can be interpreted by anything 
 message Joint {
     
@@ -11,21 +22,11 @@ message Joint {
     Info info = 3;
 
     // 3D origin point
-    Vector_f origin = 4;
+    Vector3_f32 origin = 4;
 
     // offsets from the origin points
     double Offset = 5;
     double Angle = 6;
-
-    enum JointMotion {
-        Rigid = 0;
-        Revolute = 1;
-        Slider = 2;
-        Cylindrical= 3;
-        PinSlot = 4;
-        Planar = 5;
-        BallJoint = 6;
-    }
 
     // type of motion described by the joint
     JointMotion JointMotionType = 7;
@@ -47,7 +48,7 @@ message Joint {
 // to specify vectors associated with rotational movement
 message RotationalJoint {
     Axis RotationAxis = 1;
-    Vector_i32 AxisVector = 2;
+    Vector3_f32 AxisVector = 2;
 
     double MaxValue = 3; // in radians
     double MinValue = 4; // in radians
@@ -57,7 +58,7 @@ message RotationalJoint {
 // to specify vectors associated with rotational movement
 message SliderJoint {
     Axis SlideAxis = 1;
-    Vector_i32 AxisVector = 2;
+    Vector3_f32 AxisVector = 2;
 
     double MaxValue = 3;
     double MinValue = 4;
