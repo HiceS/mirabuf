@@ -27,16 +27,15 @@ message GraphContainer {
 }
 
 message Vector2_i32 {
-    sint32 x = 1;
-    sint32 y = 2;
+    int32 x = 1;
+    int32 y = 2;
 }
 
-// This is signed to represent negative Vectors in the case where it's used
 message Vector_i32 {
-    sint32 x = 1;
-    sint32 y = 2;
-    sint32 z = 3;
-    sint32 w = 4;
+    int32 x = 1;
+    int32 y = 2;
+    int32 z = 3;
+    int32 w = 4;
 }
 
 message Vector3_f32 {
@@ -113,12 +112,12 @@ enum Axis {
 * The location where you can access the GUID for a reference
 */
 message Info {
-    // Generic readable name
-    string name = 1;
     // GUID unique value - must always be defined
     // since guid's have exactly 128bits could be represented with bytes[]
     // however endian becomes an issue
-    string GUID = 2;
-    // Version of design iteration
+    string GUID = 1;
+    // Generic readable name
+    string name = 2;
+    // Version of object iteration
     uint32 version = 3;
 }

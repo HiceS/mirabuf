@@ -8,8 +8,8 @@ import "types.proto";
 import "joint.proto";
 import "material.proto";
 
-message SimWorld {
-    repeated Assembly simObjects = 1;
+message Assemblies {
+    repeated Assembly assemblies = 1;
 }
 
 /*
@@ -30,18 +30,24 @@ message Assembly {
     GraphContainer design_hierarchy = 5;
     // The Joint hierarchy for compound shapes
     GraphContainer joint_hierarchy = 6;
+    // The Transform in space currently
+    Transform transform = 7;
 }
 
 // All of the data to construct the Assembly
 message AssemblyData {
-    // Map of the Exported Joints
-    map<string, Joint> joints = 1;
+    Parts parts = 1;
+    Joints joints = 2;
+    Materials materials = 3;
+}
+
+// Part file can be exported seperately in the future
+message Parts {
+    Info info = 1;
     // Map of the Exported Part Definitions
     map<string, PartDefinition> part_definitions = 2;
     // Map of the Exported Parts that make up the object
-    map<string, Part> parts = 3;
-    // Map of the exported Materials (physical and appearance)
-    map<string, Material> materials = 5;
+    map<string, Part> part_instances = 3;
 }
 
 /**
@@ -54,9 +60,9 @@ message PartDefinition {
     // Physical data associated with Part
     PhysicalProperties physical_data = 2;
     // Base Transform applied
-    Transform transform = 4;
+    Transform transform = 3;
     // Bodies to populate part
-    repeated Body bodies = 5;
+    repeated Body bodies = 4;
 }
 
 /*

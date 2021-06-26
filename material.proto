@@ -2,6 +2,13 @@ syntax = "proto3";
 
 import "types.proto";
 
+// Can be treated as a seperate Materials File
+message Materials {
+    // file info
+    Info info = 1;
+    map<string, Material> materials = 2;
+}
+
 message Material {
     Info info = 1;
     Appearance appearance = 2;
