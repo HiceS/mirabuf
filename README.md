@@ -2,6 +2,12 @@
 
 Open source file definition for storing, rendering, and physical data from generic 3D model assemblies.
 
+You can find build artifacts from the latest build under the Actions Tab
+
+- python
+- cpp
+- java
+
 ## Data Structure
 
 Right now the data structure represents the below diagram, however it is fairly configurable on a per use case basis.
