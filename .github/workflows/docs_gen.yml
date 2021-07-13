@@ -11,27 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Protoc
+      - uses: actions/checkout@v2
       - uses: arduino/setup-protoc@v1
         with:
           version: '3.x'
 
-      - name: Fetch GO
-      - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
           go-version: '^1.13.1' # The Go version to download (if necessary) and use.
       - run: go version
 
       - name: pull protoc-gen-docs
-      - run: go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+      - run:  |
+          go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
       - name: Compile Documentation
       - run:  |
           mkdir docs
           protoc --doc_out=./docs --doc_opt=html,index.html ./*.proto
 
-      - name: upload docs
       - uses: actions/upload-artifact@v2
         with:
           name: documentation

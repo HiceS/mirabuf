@@ -121,3 +121,12 @@ message Info {
     // Version of object iteration
     uint32 version = 3;
 }
+
+message FileTypeInformation {
+    // full name of file
+    string name = 1;
+    // extension used in file
+    string extension = 2;
+    // unix timestamp
+    string timestamp = 3;
+}
