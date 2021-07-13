@@ -76,12 +76,10 @@ message Part {
     string part_definition_reference = 2;
     // Overriding the object transform (moves the part from the def)
     Transform transform = 3;
-    // Reference to the phyiscal materials of the object
-    repeated string materials = 4;
     // Design children in hierarchy
-    repeated string children = 5;
+    repeated string children = 4;
     // Joints that interact with this element
-    repeated string joints = 6;
+    repeated string joints = 5;
 }
 
 /* 
@@ -126,12 +124,4 @@ message Mesh {
 
 // Mesh used for more effective file transfers
 message BinaryMesh {
-    // Tri Mesh Verts vec3
-    bytes verts = 1;
-    // Tri Mesh Normals vec3
-    repeated float normals = 2;
-    // Tri Mesh uv Mapping vec2
-    repeated int32 uv = 3;
-    // Tri Mesh indicies (Vert Map)
-    repeated int32 indices = 4;
 }

@@ -1,56 +1,91 @@
 # Mira 3D Format  <a href="https://github.com/HiceS/mirabuf/actions?query=workflow%3ABuildProto">![BuildProto](https://github.com/HiceS/mirabuf/workflows/BuildProto/badge.svg)</a>
-Open source file definition for storing rendering and physical data from 3D model assemblies.
+
+Open source file definition for storing, rendering, and physical data from generic 3D model assemblies.
 
 ## Data Structure
 
 Right now the data structure represents the below diagram, however it is fairly configurable on a per use case basis.
+
 As good general practice it will be instrumental to acknowledge the several ways the data can be stored and have catch cases for them.
 
-#### Info:
+### Assembly
+
+Assembly is the first building block that contains the information for the entire model.
+
+- Info
+- AssemblyData
+- isDynamic
+- PhysicalProperites (for entire model)
+- GraphContainer (Design) (to represent design hierarchy)
+- GraphContainer (Joints) (to represent joint hierarchy)
+- Transform (for modeling a additional transform on the entire assembly)
+
+### AssemblyData
+
+This is where all of the actualy Assembly information is stored and referenced from
+
+It contains parent objects for :
+
+- Parts
+- Joints
+- Materials
+
+These objects can optional be treated as libraries for data if exported alone.
+
+### Parts
+
+For every Part there is a corresponding PartDefinition that contains it's non-unique information.
+
+#### PartDefinition
+
+Contains :
+
+- Bodies / Meshes
+- PhysicalProperties
+- Transform
+
+#### Part
+
+Uses a Part Definition and can modify the transform to utilize instanced meshes and parts.
+
+- PartDefinition Reference
+- Transform
+- Joint References
+
+### Materials
+
+Materials are broken into appearance based materials and physical data based materials depending on what is being used.
+
+#### Appearance
+
+Contains information about the display texture for the model.
+
+- Color
+- roughness
+- specular
+
+#### PhysicalMaterial
+
+Contains information about the following properties for the material
+
+- Thermal Data
+- Mechanical Strength Data
+- Tensile Strength Data
+
+### Joints
+
+Joints are still a work in progress.
+
+### Types
+
+Universal types used in most of the dedicated files.
+
+#### Info
+
 - Name
 - GUID
 - Version
 - etc..
-
-#### Assembly:
-- Info (Physical, Author, etc)
-- Part Data (All of the assembly model data)
-- Design Hierarchy (Hierarchy of Design Occurreces and Transforms)
-- joint Hierarchy (detached graph to represent compound bodies)
-
-#### Part Data:
-- Joints Map (DAG of joint data with accepted orphaned nodes)
-- PartDefinition Map (Mapping of all unique design elements)
-- Part Map (Mapping of each Part with reference to PartDefinition)
-- Rendering Material Map
-- Physical Material Map
-
-#### PartDefinition:
-- Info
-- [Optional] Body List
-- Physical Attributes
-
-#### Part:
-(all of these are modifiers to PartDefinition)
-- Info
-- PartDefRef
-- Transform
-    - Translation elements (rot - pos)
-- [Optional] list of design children
-- [Optional] Joint List
-
-#### Body:
-(always unique)
-- Info
-- PartRef (for bi-directional traversal where needed)
-- Triangle Mesh
-
-
-#### Triangle Mesh:
-- Indicies
-- Verts
-- Norms
-- UV Map
 
 ## Building
 
