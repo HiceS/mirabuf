@@ -19,14 +19,14 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: '^1.13.1' # The Go version to download (if necessary) and use.
-      - run: go version
+        run: go version
 
       - name: pull protoc-gen-docs
-      - run:  |
+        run:  |
           go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
 
       - name: Compile Documentation
-      - run:  |
+        run:  |
           mkdir docs
           protoc --doc_out=./docs --doc_opt=html,index.html ./*.proto
 
