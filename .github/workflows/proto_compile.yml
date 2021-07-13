@@ -28,6 +28,7 @@ jobs:
           name: python_proto_artifact
           path: ./libs/python/
           if-no-files-found: error
+          retention-days: 5
 
       - name: Cpp Libs
         run:  |
@@ -39,6 +40,7 @@ jobs:
           name: cpp_proto_artifact
           path: ./libs/cpp/
           if-no-files-found: error
+          retention-days: 5
 
       - name: Java Libs
         run:  |
@@ -50,6 +52,7 @@ jobs:
           name: java_proto_artifact
           path: ./libs/java/
           if-no-files-found: error
+          retention-days: 5
 
       - name: Print Libs
         run:  |
