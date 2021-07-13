@@ -23,15 +23,33 @@ jobs:
            protoc -I=. --python_out=./libs/python ./*.proto
            ls ./libs/python -R
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: python_proto_artifact
+          path: ./libs/python/
+          if-no-files-found: error
+
       - name: Cpp Libs
         run:  |
            protoc -I=. --cpp_out=./libs/cpp ./*.proto
            ls ./libs/cpp -R
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: cpp_proto_artifact
+          path: ./libs/cpp/
+          if-no-files-found: error
+
       - name: Java Libs
         run:  |
            protoc -I=. --java_out=./libs/java ./*.proto
            ls ./libs/java -R
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: java_proto_artifact
+          path: ./libs/java/
+          if-no-files-found: error
 
       - name: Print Libs
         run:  |
