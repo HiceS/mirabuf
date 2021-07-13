@@ -8,6 +8,8 @@ You can find build artifacts from the latest build under the Actions Tab
 - cpp
 - java
 
+Documentation is available as a Build Artifact for now in the GenerateDocs build action.
+
 ## Data Structure
 
 Right now the data structure represents the below diagram, however it is fairly configurable on a per use case basis.
