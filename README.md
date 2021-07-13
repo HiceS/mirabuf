@@ -1,4 +1,4 @@
-# Mira 3D Format  <a href="https://github.com/HiceS/mirabuf/actions?query=workflow%3ABuildProto">![BuildProto](https://github.com/HiceS/mirabuf/workflows/BuildProto/badge.svg)</a>
+# Mira 3D Format  [![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml) [![GenerateDocs](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml/badge.svg?branch=main)](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml)
 
 Open source file definition for storing, rendering, and translating physical data from generic 3D model assemblies.
 
