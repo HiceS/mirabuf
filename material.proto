@@ -2,19 +2,30 @@ syntax = "proto3";
 
 import "types.proto";
 
-// Can be treated as a seperate Materials File
+/**
+ * Represents a File or Set of Materials with Appearances and Physical Data
+ * 
+ * Can be Stored in AssemblyData
+ */
 message Materials {
     // file info
     Info info = 1;
     map<string, Material> materials = 2;
 }
 
+/**
+ * Contains the information regarding the appearance and physical properties
+ */
 message Material {
     Info info = 1;
     Appearance appearance = 2;
     PhysicalMaterial physicalMaterial = 3;
 }
 
+/**
+ * Contains information on how a object looks
+ * Limited to just color for now
+ */
 message Appearance {
     Color albedo = 1;
     float roughness = 2;
@@ -22,43 +33,49 @@ message Appearance {
     float specular = 4;
 }
 
+/**
+ * Data to represent any given Physical Material
+ */
 message PhysicalMaterial {
 
     enum MaterialType {
-        METAL = 0; // default 
+        METAL = 0;
         PLASTIC = 1;
     }
  
     message Thermal {
-        float thermal_conductivity = 1; // W/(m*K)
-        float specific_heat = 2; // J/(g*C)
-        float thermal_expansion_coefficient = 3; // um/(m*C)
+        float thermal_conductivity = 1; /// W/(m*K)
+        float specific_heat = 2;        /// J/(g*C)
+        float thermal_expansion_coefficient = 3; /// um/(m*C)
     }
 
     message Mechanical {
         // naming scheme changes here
-        float young_mod = 1; // GPa
-        float poisson_ratio = 2; // ?
-        float shear_mod = 3; // MPa
-        float density = 4; // g/cm^3
+        float young_mod = 1;        /// GPa
+        float poisson_ratio = 2;    /// ?
+        float shear_mod = 3;        /// MPa
+        float density = 4;          /// g/cm^3
         float damping_coefficient = 5; // ?
     }
 
     message Strength {
-        float yield_strength = 1; // MPa
-        float tensile_strength = 2; // MPa
-        bool thermal_treatment = 3; // yes / no
+        float yield_strength = 1;       /// MPa
+        float tensile_strength = 2;     /// MPa
+        bool thermal_treatment = 3;     /// yes / no
     }
+    
+    string name = 1;
+    string description = 2;
 
-    message Information {
-        string name = 1;
-        string description = 2;
-        MaterialType type = 3;
-        bool deformable = 4;
-    }
+    Thermal thermal = 3;        /// Thermal Physical properties of the model
+    Mechanical mechanical = 4;  /// Mechanical properties of the model
+    Strength strength = 5;      /// Physical Strength properties of the model=
 
-    Information information = 1;
-    Thermal thermal = 2;
-    Mechanical mechanical = 3;
-    Strength strength = 4;
+    float dynamic_friction = 6; /// Frictional force for dampening - Interpolate (0-1)
+    float static_friction = 7;  /// Frictional force override at stop - Interpolate (0-1)
+    float restitution = 8;      /// Restitution of the object - Interpolate (0-1)
+
+    bool deformable = 9;    /// should this object deform when encountering large forces - TODO: This needs a proper message and equation field
+    MaterialType type = 10;  /// generic type to assign some default params
+
 }

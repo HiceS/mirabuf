@@ -12,41 +12,42 @@ message Assemblies {
     repeated Assembly assemblies = 1;
 }
 
-/*
-* Assembly
-* Base Design to be interacted with
-*/
+/**
+ * Assembly
+ * Base Design to be interacted with
+ */
 message Assembly {
-    // Basic information (name, Author, etc)
+    /// Basic information (name, Author, etc)
     Info info = 1;
-    // All of the data in the assembly
+    /// All of the data in the assembly
     AssemblyData data = 2;
-    // Can it be effected by the simulation dynamically
+    /// Can it be effected by the simulation dynamically
     bool dynamic = 3;
-    // Overall physical data of the assembly
+    /// Overall physical data of the assembly
     PhysicalProperties physical_data = 4;
-    // The Design hierarchy represented by Part Refs
-    // The first object is a root container for all top level items
+    /// The Design hierarchy represented by Part Refs - The first object is a root container for all top level items
     GraphContainer design_hierarchy = 5;
-    // The Joint hierarchy for compound shapes
+    /// The Joint hierarchy for compound shapes
     GraphContainer joint_hierarchy = 6;
-    // The Transform in space currently
+    /// The Transform in space currently
     Transform transform = 7;
 }
 
-// All of the data to construct the Assembly
+/**
+ * Data used to construct the assembly
+ */
 message AssemblyData {
-    Parts parts = 1;
-    Joints joints = 2;
-    Materials materials = 3;
+    Parts parts = 1;    /// Meshes and Design Objects
+    Joints joints = 2;  /// Joint Definition Set
+    Materials materials = 3; /// Appearance and Physical Material Set
 }
 
 // Part file can be exported seperately in the future
 message Parts {
     Info info = 1;
-    // Map of the Exported Part Definitions
+    /// Map of the Exported Part Definitions
     map<string, PartDefinition> part_definitions = 2;
-    // Map of the Exported Parts that make up the object
+    /// Map of the Exported Parts that make up the object
     map<string, Part> part_instances = 3;
 }
 
@@ -57,11 +58,11 @@ message Parts {
 */
 message PartDefinition {
     Info info = 1;
-    // Physical data associated with Part
+    /// Physical data associated with Part
     PhysicalProperties physical_data = 2;
-    // Base Transform applied
-    Transform transform = 3;
-    // Bodies to populate part
+    /// Base Transform applied - Most Likely Identity Matrix
+    Transform base_transform = 3;
+    /// Bodies to populate part
     repeated Body bodies = 4;
 }
 
@@ -72,14 +73,12 @@ message PartDefinition {
 */
 message Part {
     Info info = 1;
-    // Reference to the Part Definition defined in Assembly Data
+    /// Reference to the Part Definition defined in Assembly Data
     string part_definition_reference = 2;
-    // Overriding the object transform (moves the part from the def)
+    /// Overriding the object transform (moves the part from the def)
     Transform transform = 3;
-    // Design children in hierarchy
-    repeated string children = 4;
-    // Joints that interact with this element
-    repeated string joints = 5;
+    /// Joints that interact with this element
+    repeated string joints = 4;
 }
 
 /* 
@@ -89,39 +88,50 @@ message Part {
 */
 message Body {
     Info info = 1;
-    // Reference to Part Definition
+    /// Reference to Part Definition
     string part = 2;
-    // Triangle Mesh for rendering
+    /// Triangle Mesh for rendering
     TriangleMesh triangle_mesh = 3;
-    // Material Reference 
+    /// Material Reference 
     string material = 4;
 }
 
+/**
+ * Traingle Mesh for Storing Display Mesh data
+ *
+ */
 message TriangleMesh {
     Info info = 1;
-    // Is this object a Plane ? (Does it have volume)
+
+    /// Is this object a Plane ? (Does it have volume)
     bool has_volume = 2;
-    // Rendered Appearance properties referenced from Assembly Data
+
+    /// Rendered Appearance properties referenced from Assembly Data
     string material_reference = 3;
 
+    /// What kind of Mesh Data exists in this Triangle Mesh
     oneof mesh_type {
-        Mesh mesh = 4;
-        BinaryMesh bmesh = 5;
+        Mesh mesh = 4; /// Stored as true types, inidicies, verts, uv
+        BinaryMesh bmesh = 5; /// Stored as binary data in bytes
     }
 }
 
-// Mesh used most of the time
+/**
+ * Mesh Data stored as generic Data Structure
+ *
+ */
 message Mesh {
-    // Tri Mesh Verts vec3
+    /// Tri Mesh Verts vec3
     repeated float verts = 1;
-    // Tri Mesh Normals vec3
+    /// Tri Mesh Normals vec3
     repeated float normals = 2;
-    // Tri Mesh uv Mapping vec2
-    repeated int32 uv = 3;
-    // Tri Mesh indicies (Vert Map)
+    /// Tri Mesh uv Mapping vec2
+    repeated float uv = 3;
+    /// Tri Mesh indicies (Vert Map)
     repeated int32 indices = 4;
 }
 
-// Mesh used for more effective file transfers
+/// Mesh used for more effective file transfers
 message BinaryMesh {
+    bytes data = 1; /// BEWARE of ENDIANESS 
 }
