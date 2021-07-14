@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#assembly.proto">assembly.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#mirabuf.Assemblies"><span class="badge">M</span>Assemblies</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Assembly"><span class="badge">M</span>Assembly</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.AssemblyData"><span class="badge">M</span>AssemblyData</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.BinaryMesh"><span class="badge">M</span>BinaryMesh</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Body"><span class="badge">M</span>Body</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Mesh"><span class="badge">M</span>Mesh</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Part"><span class="badge">M</span>Part</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.PartDefinition"><span class="badge">M</span>PartDefinition</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Parts"><span class="badge">M</span>Parts</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Parts.PartDefinitionsEntry"><span class="badge">M</span>Parts.PartDefinitionsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.Parts.PartInstancesEntry"><span class="badge">M</span>Parts.PartInstancesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.TriangleMesh"><span class="badge">M</span>TriangleMesh</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#joint.proto">joint.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.Joint"><span class="badge">M</span>Joint</a>
+                </li>
+              
+                <li>
+                  <a href="#.Joints"><span class="badge">M</span>Joints</a>
+                </li>
+              
+                <li>
+                  <a href="#.Joints.JointsEntry"><span class="badge">M</span>Joints.JointsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#.RigidGroup"><span class="badge">M</span>RigidGroup</a>
+                </li>
+              
+                <li>
+                  <a href="#.RigidJoint"><span class="badge">M</span>RigidJoint</a>
+                </li>
+              
+                <li>
+                  <a href="#.RotationalJoint"><span class="badge">M</span>RotationalJoint</a>
+                </li>
+              
+                <li>
+                  <a href="#.SliderJoint"><span class="badge">M</span>SliderJoint</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.JointMotion"><span class="badge">E</span>JointMotion</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#material.proto">material.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.Appearance"><span class="badge">M</span>Appearance</a>
+                </li>
+              
+                <li>
+                  <a href="#.Material"><span class="badge">M</span>Material</a>
+                </li>
+              
+                <li>
+                  <a href="#.Materials"><span class="badge">M</span>Materials</a>
+                </li>
+              
+                <li>
+                  <a href="#.Materials.MaterialsEntry"><span class="badge">M</span>Materials.MaterialsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#.PhysicalMaterial"><span class="badge">M</span>PhysicalMaterial</a>
+                </li>
+              
+                <li>
+                  <a href="#.PhysicalMaterial.Information"><span class="badge">M</span>PhysicalMaterial.Information</a>
+                </li>
+              
+                <li>
+                  <a href="#.PhysicalMaterial.Mechanical"><span class="badge">M</span>PhysicalMaterial.Mechanical</a>
+                </li>
+              
+                <li>
+                  <a href="#.PhysicalMaterial.Strength"><span class="badge">M</span>PhysicalMaterial.Strength</a>
+                </li>
+              
+                <li>
+                  <a href="#.PhysicalMaterial.Thermal"><span class="badge">M</span>PhysicalMaterial.Thermal</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.PhysicalMaterial.MaterialType"><span class="badge">E</span>PhysicalMaterial.MaterialType</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#types.proto">types.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#.Color"><span class="badge">M</span>Color</a>
+                </li>
+              
+                <li>
+                  <a href="#.Edge"><span class="badge">M</span>Edge</a>
+                </li>
+              
+                <li>
+                  <a href="#.FileTypeInformation"><span class="badge">M</span>FileTypeInformation</a>
+                </li>
+              
+                <li>
+                  <a href="#.GraphContainer"><span class="badge">M</span>GraphContainer</a>
+                </li>
+              
+                <li>
+                  <a href="#.Info"><span class="badge">M</span>Info</a>
+                </li>
+              
+                <li>
+                  <a href="#.Node"><span class="badge">M</span>Node</a>
+                </li>
+              
+                <li>
+                  <a href="#.PhysicalProperties"><span class="badge">M</span>PhysicalProperties</a>
+                </li>
+              
+                <li>
+                  <a href="#.Rotation"><span class="badge">M</span>Rotation</a>
+                </li>
+              
+                <li>
+                  <a href="#.SpatialTransformMatrix"><span class="badge">M</span>SpatialTransformMatrix</a>
+                </li>
+              
+                <li>
+                  <a href="#.Transform"><span class="badge">M</span>Transform</a>
+                </li>
+              
+                <li>
+                  <a href="#.Translation"><span class="badge">M</span>Translation</a>
+                </li>
+              
+                <li>
+                  <a href="#.Vector2_i32"><span class="badge">M</span>Vector2_i32</a>
+                </li>
+              
+                <li>
+                  <a href="#.Vector3_f32"><span class="badge">M</span>Vector3_f32</a>
+                </li>
+              
+                <li>
+                  <a href="#.Vector3_f64"><span class="badge">M</span>Vector3_f64</a>
+                </li>
+              
+                <li>
+                  <a href="#.Vector_i32"><span class="badge">M</span>Vector_i32</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#.Axis"><span class="badge">E</span>Axis</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="assembly.proto">assembly.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="mirabuf.Assemblies">Assemblies</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>assemblies</td>
+                  <td><a href="#mirabuf.Assembly">Assembly</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.Assembly">Assembly</h3>
+        <p>Assembly</p><p>Base Design to be interacted with</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p>Basic information (name, Author, etc) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#mirabuf.AssemblyData">AssemblyData</a></td>
+                  <td></td>
+                  <td><p>All of the data in the assembly </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dynamic</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Can it be effected by the simulation dynamically </p></td>
+                </tr>
+              
+                <tr>
+                  <td>physical_data</td>
+                  <td><a href="#PhysicalProperties">PhysicalProperties</a></td>
+                  <td></td>
+                  <td><p>Overall physical data of the assembly </p></td>
+                </tr>
+              
+                <tr>
+                  <td>design_hierarchy</td>
+                  <td><a href="#GraphContainer">GraphContainer</a></td>
+                  <td></td>
+                  <td><p>The Design hierarchy represented by Part Refs
+The first object is a root container for all top level items </p></td>
+                </tr>
+              
+                <tr>
+                  <td>joint_hierarchy</td>
+                  <td><a href="#GraphContainer">GraphContainer</a></td>
+                  <td></td>
+                  <td><p>The Joint hierarchy for compound shapes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transform</td>
+                  <td><a href="#Transform">Transform</a></td>
+                  <td></td>
+                  <td><p>The Transform in space currently </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.AssemblyData">AssemblyData</h3>
+        <p>All of the data to construct the Assembly</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>parts</td>
+                  <td><a href="#mirabuf.Parts">Parts</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>joints</td>
+                  <td><a href="#Joints">Joints</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>materials</td>
+                  <td><a href="#Materials">Materials</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.BinaryMesh">BinaryMesh</h3>
+        <p>Mesh used for more effective file transfers</p>
+
+        
+
+        
+      
+        <h3 id="mirabuf.Body">Body</h3>
+        <p>Body object</p><p>Can contain a TriangleMesh or Collection of Faces.</p><p>Must be unique in the context of the Assembly.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>part</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reference to Part Definition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>triangle_mesh</td>
+                  <td><a href="#mirabuf.TriangleMesh">TriangleMesh</a></td>
+                  <td></td>
+                  <td><p>Triangle Mesh for rendering </p></td>
+                </tr>
+              
+                <tr>
+                  <td>material</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Material Reference </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.Mesh">Mesh</h3>
+        <p>Mesh used most of the time</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>verts</td>
+                  <td><a href="#float">float</a></td>
+                  <td>repeated</td>
+                  <td><p>Tri Mesh Verts vec3 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>normals</td>
+                  <td><a href="#float">float</a></td>
+                  <td>repeated</td>
+                  <td><p>Tri Mesh Normals vec3 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>uv</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>repeated</td>
+                  <td><p>Tri Mesh uv Mapping vec2 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>indices</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>repeated</td>
+                  <td><p>Tri Mesh indicies (Vert Map) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.Part">Part</h3>
+        <p>Part</p><p>Represents a object that does not have to be unique</p><p>Can be an override for an existing definition</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>part_definition_reference</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reference to the Part Definition defined in Assembly Data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transform</td>
+                  <td><a href="#Transform">Transform</a></td>
+                  <td></td>
+                  <td><p>Overriding the object transform (moves the part from the def) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>children</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Design children in hierarchy </p></td>
+                </tr>
+              
+                <tr>
+                  <td>joints</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Joints that interact with this element </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.PartDefinition">PartDefinition</h3>
+        <p>Part Definition</p><p>Unique Definition of a part that can be replicated.</p><p>Useful for keeping the object counter down in the scene.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>physical_data</td>
+                  <td><a href="#PhysicalProperties">PhysicalProperties</a></td>
+                  <td></td>
+                  <td><p>Physical data associated with Part </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transform</td>
+                  <td><a href="#Transform">Transform</a></td>
+                  <td></td>
+                  <td><p>Base Transform applied </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bodies</td>
+                  <td><a href="#mirabuf.Body">Body</a></td>
+                  <td>repeated</td>
+                  <td><p>Bodies to populate part </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.Parts">Parts</h3>
+        <p>Part file can be exported seperately in the future</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>part_definitions</td>
+                  <td><a href="#mirabuf.Parts.PartDefinitionsEntry">Parts.PartDefinitionsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Map of the Exported Part Definitions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>part_instances</td>
+                  <td><a href="#mirabuf.Parts.PartInstancesEntry">Parts.PartInstancesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Map of the Exported Parts that make up the object </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.Parts.PartDefinitionsEntry">Parts.PartDefinitionsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#mirabuf.PartDefinition">PartDefinition</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.Parts.PartInstancesEntry">Parts.PartInstancesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#mirabuf.Part">Part</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.TriangleMesh">TriangleMesh</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>has_volume</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Is this object a Plane ? (Does it have volume) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>material_reference</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rendered Appearance properties referenced from Assembly Data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mesh</td>
+                  <td><a href="#mirabuf.Mesh">Mesh</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bmesh</td>
+                  <td><a href="#mirabuf.BinaryMesh">BinaryMesh</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="joint.proto">joint.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".Joint">Joint</h3>
+        <p>Describes a Joint in the Fusion Context that can be interpreted by anything</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>Part1</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>Part2</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>origin</td>
+                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td></td>
+                  <td><p>3D origin point </p></td>
+                </tr>
+              
+                <tr>
+                  <td>Offset</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>offsets from the origin points </p></td>
+                </tr>
+              
+                <tr>
+                  <td>Angle</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>JointMotionType</td>
+                  <td><a href="#JointMotion">JointMotion</a></td>
+                  <td></td>
+                  <td><p>type of motion described by the joint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>MaximumValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>fusion joint parameters </p></td>
+                </tr>
+              
+                <tr>
+                  <td>MinimumValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>RestValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>RevoluteMotion</td>
+                  <td><a href="#RotationalJoint">RotationalJoint</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>SlideMotion</td>
+                  <td><a href="#SliderJoint">SliderJoint</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>RigidMotion</td>
+                  <td><a href="#RigidJoint">RigidJoint</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Joints">Joints</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>joints</td>
+                  <td><a href="#Joints.JointsEntry">Joints.JointsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Joints.JointsEntry">Joints.JointsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#Joint">Joint</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RigidGroup">RigidGroup</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>occurrences</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>this could be the full path of the occurrence in order to make it easier to assembly them possibly - just parse on the unity side </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".RigidJoint">RigidJoint</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id=".RotationalJoint">RotationalJoint</h3>
+        <p>to specify vectors associated with rotational movement</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>RotationAxis</td>
+                  <td><a href="#Axis">Axis</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>AxisVector</td>
+                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>MaxValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>in radians </p></td>
+                </tr>
+              
+                <tr>
+                  <td>MinValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>in radians </p></td>
+                </tr>
+              
+                <tr>
+                  <td>CurrentValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>in radians </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".SliderJoint">SliderJoint</h3>
+        <p>to specify vectors associated with rotational movement</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>SlideAxis</td>
+                  <td><a href="#Axis">Axis</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>AxisVector</td>
+                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>MaxValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>MinValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>CurrentValue</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".JointMotion">JointMotion</h3>
+        <p>Describes the joint</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Rigid</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Revolute</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Slider</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Cylindrical</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PinSlot</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Planar</td>
+                <td>5</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>BallJoint</td>
+                <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="material.proto">material.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".Appearance">Appearance</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>albedo</td>
+                  <td><a href="#Color">Color</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>roughness</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>metallic</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>specular</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Material">Material</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>appearance</td>
+                  <td><a href="#Appearance">Appearance</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>physicalMaterial</td>
+                  <td><a href="#PhysicalMaterial">PhysicalMaterial</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Materials">Materials</h3>
+        <p>Can be treated as a seperate Materials File</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#Info">Info</a></td>
+                  <td></td>
+                  <td><p>file info </p></td>
+                </tr>
+              
+                <tr>
+                  <td>materials</td>
+                  <td><a href="#Materials.MaterialsEntry">Materials.MaterialsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Materials.MaterialsEntry">Materials.MaterialsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#Material">Material</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PhysicalMaterial">PhysicalMaterial</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>information</td>
+                  <td><a href="#PhysicalMaterial.Information">PhysicalMaterial.Information</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>thermal</td>
+                  <td><a href="#PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mechanical</td>
+                  <td><a href="#PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>strength</td>
+                  <td><a href="#PhysicalMaterial.Strength">PhysicalMaterial.Strength</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PhysicalMaterial.Information">PhysicalMaterial.Information</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>deformable</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>young_mod</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>naming scheme changes here
+
+GPa </p></td>
+                </tr>
+              
+                <tr>
+                  <td>poisson_ratio</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>? </p></td>
+                </tr>
+              
+                <tr>
+                  <td>shear_mod</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>MPa </p></td>
+                </tr>
+              
+                <tr>
+                  <td>density</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>g/cm^3 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>damping_coefficient</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>? </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PhysicalMaterial.Strength">PhysicalMaterial.Strength</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>yield_strength</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>MPa </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tensile_strength</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>MPa </p></td>
+                </tr>
+              
+                <tr>
+                  <td>thermal_treatment</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>yes / no </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>thermal_conductivity</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>W/(m*K) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>specific_heat</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>J/(g*C) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>thermal_expansion_coefficient</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>um/(m*C) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>METAL</td>
+                <td>0</td>
+                <td><p>default</p></td>
+              </tr>
+            
+              <tr>
+                <td>PLASTIC</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="types.proto">types.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id=".Color">Color</h3>
+        <p>RGBA in expanded form 0-255</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>R</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>red </p></td>
+                </tr>
+              
+                <tr>
+                  <td>G</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>green </p></td>
+                </tr>
+              
+                <tr>
+                  <td>B</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>blue </p></td>
+                </tr>
+              
+                <tr>
+                  <td>A</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>alpha </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Edge">Edge</h3>
+        <p>Each edge contains another object and arbitrary data</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>node</td>
+                  <td><a href="#Node">Node</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".FileTypeInformation">FileTypeInformation</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>full name of file </p></td>
+                </tr>
+              
+                <tr>
+                  <td>extension</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>extension used in file </p></td>
+                </tr>
+              
+                <tr>
+                  <td>timestamp</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unix timestamp </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".GraphContainer">GraphContainer</h3>
+        <p>Top level GraphContainer</p><p>Contains all Graph elemebt roots within</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>nodes</td>
+                  <td><a href="#Node">Node</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Info">Info</h3>
+        <p>Info</p><p>Defines basic fields for almost all objects</p><p>The location where you can access the GUID for a reference</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>GUID</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>GUID unique value - must always be defined
+since guid&#39;s have exactly 128bits could be represented with bytes[]
+however endian becomes an issue </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Generic readable name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>version</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>Version of object iteration </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Node">Node</h3>
+        <p>Each proper object within the Graph - First one is Root</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>children</td>
+                  <td><a href="#Edge">Edge</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".PhysicalProperties">PhysicalProperties</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>friction</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>density</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>kg per cubic cm kg/(cm^3) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mass</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>kg </p></td>
+                </tr>
+              
+                <tr>
+                  <td>volume</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>cm^3 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>area</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p>cm^2 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>com</td>
+                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td></td>
+                  <td><p>non-negative? Vec3 </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Rotation">Rotation</h3>
+        <p>This is only positive rotation</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>euler_x</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>euler_y</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>euler_z</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".SpatialTransformMatrix">SpatialTransformMatrix</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>values</td>
+                  <td><a href="#float">float</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Transform">Transform</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>spatial_matrix</td>
+                  <td><a href="#SpatialTransformMatrix">SpatialTransformMatrix</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>translation</td>
+                  <td><a href="#Translation">Translation</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rotation</td>
+                  <td><a href="#Rotation">Rotation</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Translation">Translation</h3>
+        <p>https://www.brainvoyager.com/bv/doc/UsersGuide/CoordsAndTransforms/SpatialTransformationMatrices.html#:~:text=Homogeneous%20coordinates%20(4%2Delement%20vectors,points%20and%203%2Drow%20matrices.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>origin</td>
+                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>x</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Vector2_i32">Vector2_i32</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>x</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Vector3_f32">Vector3_f32</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>x</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Vector3_f64">Vector3_f64</h3>
+        <p>The Double equivalent - storage safe</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>x</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z</td>
+                  <td><a href="#double">double</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id=".Vector_i32">Vector_i32</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>x</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>y</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>z</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>w</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id=".Axis">Axis</h3>
+        <p>Axis Enum</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>X</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Y</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Z</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
