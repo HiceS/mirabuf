@@ -12,6 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Pull pages branch
+        uses: actions/checkout@v2
+        with:
+          repository: HiceS/mirabuf
+          ref: 'pages'
+          path: ./pages
+
+      - name: Setup Protoc and GO
+
       - uses: arduino/setup-protoc@v1
         with:
           version: '3.x'
@@ -27,12 +37,13 @@ jobs:
       - name: Compile Documentation
         run:  |
           mkdir docs
-          protoc --doc_out=./docs --doc_opt=html,index.html ./*.proto
+          protoc --doc_out=./pages --doc_opt=html,index.html ./*.proto
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: documentation
-          path: ./docs
-          if-no-files-found: error
-          retention-days: 5
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: pages
+          FOLDER: pages
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
