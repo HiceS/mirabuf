@@ -13,6 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Pull pages branch
+        uses: actions/checkout@v2
+        with:
+          repository: HiceS/mirabuf
+          ref: 'pages'
+          path: ./pages
+
       - uses: arduino/setup-protoc@v1
         with:
           version: '3.x'
@@ -27,7 +34,6 @@ jobs:
 
       - name: Compile Documentation
         run:  |
-          mkdir pages
           protoc --doc_out=./pages --doc_opt=html,index.html ./*.proto
 
       - name: Deploy
