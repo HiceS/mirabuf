@@ -21,7 +21,7 @@ message AnalogInput {
     string Type = 2;
 }
 
-message UpdateMessage {
+message Layout {
     string Id = 1;
     message ModifiedFields {
         map<string, DigitalOutput> DOs = 1;
