@@ -301,10 +301,6 @@
                 </li>
               
                 <li>
-                  <a href="#.PhysicalMaterial.Information"><span class="badge">M</span>PhysicalMaterial.Information</a>
-                </li>
-              
-                <li>
                   <a href="#.PhysicalMaterial.Mechanical"><span class="badge">M</span>PhysicalMaterial.Mechanical</a>
                 </li>
               
@@ -336,7 +332,7 @@
                 </li>
               
                 <li>
-                  <a href="#.Edge"><span class="badge">M</span>Edge</a>
+                  <a href="#.EncodedData"><span class="badge">M</span>EncodedData</a>
                 </li>
               
                 <li>
@@ -360,40 +356,28 @@
                 </li>
               
                 <li>
-                  <a href="#.Rotation"><span class="badge">M</span>Rotation</a>
-                </li>
-              
-                <li>
-                  <a href="#.SpatialTransformMatrix"><span class="badge">M</span>SpatialTransformMatrix</a>
-                </li>
-              
-                <li>
                   <a href="#.Transform"><span class="badge">M</span>Transform</a>
                 </li>
               
                 <li>
-                  <a href="#.Translation"><span class="badge">M</span>Translation</a>
+                  <a href="#.UserData"><span class="badge">M</span>UserData</a>
                 </li>
               
                 <li>
-                  <a href="#.Vector2_i32"><span class="badge">M</span>Vector2_i32</a>
+                  <a href="#.UserData.DataEntry"><span class="badge">M</span>UserData.DataEntry</a>
                 </li>
               
                 <li>
-                  <a href="#.Vector3_f32"><span class="badge">M</span>Vector3_f32</a>
-                </li>
-              
-                <li>
-                  <a href="#.Vector3_f64"><span class="badge">M</span>Vector3_f64</a>
-                </li>
-              
-                <li>
-                  <a href="#.Vector_i32"><span class="badge">M</span>Vector_i32</a>
+                  <a href="#.Vector3"><span class="badge">M</span>Vector3</a>
                 </li>
               
               
                 <li>
                   <a href="#.Axis"><span class="badge">E</span>Axis</a>
+                </li>
+              
+                <li>
+                  <a href="#.DataType"><span class="badge">E</span>DataType</a>
                 </li>
               
               
@@ -479,8 +463,7 @@
                   <td>design_hierarchy</td>
                   <td><a href="#GraphContainer">GraphContainer</a></td>
                   <td></td>
-                  <td><p>The Design hierarchy represented by Part Refs
-The first object is a root container for all top level items </p></td>
+                  <td><p>The Design hierarchy represented by Part Refs - The first object is a root container for all top level items </p></td>
                 </tr>
               
                 <tr>
@@ -505,7 +488,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id="mirabuf.AssemblyData">AssemblyData</h3>
-        <p>All of the data to construct the Assembly</p>
+        <p>Data used to construct the assembly</p>
 
         
           <table class="field-table">
@@ -518,21 +501,21 @@ The first object is a root container for all top level items </p></td>
                   <td>parts</td>
                   <td><a href="#mirabuf.Parts">Parts</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Meshes and Design Objects </p></td>
                 </tr>
               
                 <tr>
                   <td>joints</td>
                   <td><a href="#Joints">Joints</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Joint Definition Set </p></td>
                 </tr>
               
                 <tr>
                   <td>materials</td>
                   <td><a href="#Materials">Materials</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Appearance and Physical Material Set </p></td>
                 </tr>
               
             </tbody>
@@ -546,6 +529,23 @@ The first object is a root container for all top level items </p></td>
         <p>Mesh used for more effective file transfers</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#bytes">bytes</a></td>
+                  <td></td>
+                  <td><p>BEWARE of ENDIANESS </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -595,7 +595,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id="mirabuf.Mesh">Mesh</h3>
-        <p>Mesh used most of the time</p>
+        <p>Mesh Data stored as generic Data Structure</p>
 
         
           <table class="field-table">
@@ -620,7 +620,7 @@ The first object is a root container for all top level items </p></td>
               
                 <tr>
                   <td>uv</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td><a href="#float">float</a></td>
                   <td>repeated</td>
                   <td><p>Tri Mesh uv Mapping vec2 </p></td>
                 </tr>
@@ -671,13 +671,6 @@ The first object is a root container for all top level items </p></td>
                 </tr>
               
                 <tr>
-                  <td>children</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Design children in hierarchy </p></td>
-                </tr>
-              
-                <tr>
                   <td>joints</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
@@ -716,10 +709,10 @@ The first object is a root container for all top level items </p></td>
                 </tr>
               
                 <tr>
-                  <td>transform</td>
+                  <td>base_transform</td>
                   <td><a href="#Transform">Transform</a></td>
                   <td></td>
-                  <td><p>Base Transform applied </p></td>
+                  <td><p>Base Transform applied - Most Likely Identity Matrix </p></td>
                 </tr>
               
                 <tr>
@@ -837,7 +830,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id="mirabuf.TriangleMesh">TriangleMesh</h3>
-        <p></p>
+        <p>Traingle Mesh for Storing Display Mesh data</p>
 
         
           <table class="field-table">
@@ -871,14 +864,14 @@ The first object is a root container for all top level items </p></td>
                   <td>mesh</td>
                   <td><a href="#mirabuf.Mesh">Mesh</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Stored as true types, inidicies, verts, uv </p></td>
                 </tr>
               
                 <tr>
                   <td>bmesh</td>
                   <td><a href="#mirabuf.BinaryMesh">BinaryMesh</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Stored as binary data in bytes </p></td>
                 </tr>
               
             </tbody>
@@ -935,7 +928,7 @@ The first object is a root container for all top level items </p></td>
               
                 <tr>
                   <td>origin</td>
-                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td><a href="#Vector3">Vector3</a></td>
                   <td></td>
                   <td><p>3D origin point </p></td>
                 </tr>
@@ -1011,7 +1004,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id=".Joints">Joints</h3>
-        <p></p>
+        <p>THIS NEEDS TO BE RE-LOOKED OVER</p>
 
         
           <table class="field-table">
@@ -1129,7 +1122,7 @@ The first object is a root container for all top level items </p></td>
               
                 <tr>
                   <td>AxisVector</td>
-                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td><a href="#Vector3">Vector3</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1181,7 +1174,7 @@ The first object is a root container for all top level items </p></td>
               
                 <tr>
                   <td>AxisVector</td>
-                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td><a href="#Vector3">Vector3</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1282,7 +1275,7 @@ The first object is a root container for all top level items </p></td>
 
       
         <h3 id=".Appearance">Appearance</h3>
-        <p></p>
+        <p>Contains information on how a object looks</p><p>Limited to just color for now</p>
 
         
           <table class="field-table">
@@ -1327,7 +1320,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id=".Material">Material</h3>
-        <p></p>
+        <p>Contains the information regarding the appearance and physical properties</p>
 
         
           <table class="field-table">
@@ -1365,7 +1358,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id=".Materials">Materials</h3>
-        <p>Can be treated as a seperate Materials File</p>
+        <p>Represents a File or Set of Materials with Appearances and Physical Data</p><p>Can be Stored in AssemblyData</p>
 
         
           <table class="field-table">
@@ -1427,52 +1420,7 @@ The first object is a root container for all top level items </p></td>
         
       
         <h3 id=".PhysicalMaterial">PhysicalMaterial</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>information</td>
-                  <td><a href="#PhysicalMaterial.Information">PhysicalMaterial.Information</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>thermal</td>
-                  <td><a href="#PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>mechanical</td>
-                  <td><a href="#PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>strength</td>
-                  <td><a href="#PhysicalMaterial.Strength">PhysicalMaterial.Strength</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".PhysicalMaterial.Information">PhysicalMaterial.Information</h3>
-        <p></p>
+        <p>Data to represent any given Physical Material</p>
 
         
           <table class="field-table">
@@ -1496,17 +1444,59 @@ The first object is a root container for all top level items </p></td>
                 </tr>
               
                 <tr>
-                  <td>type</td>
-                  <td><a href="#PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</a></td>
+                  <td>thermal</td>
+                  <td><a href="#PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Thermal Physical properties of the model </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mechanical</td>
+                  <td><a href="#PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</a></td>
+                  <td></td>
+                  <td><p>Mechanical properties of the model </p></td>
+                </tr>
+              
+                <tr>
+                  <td>strength</td>
+                  <td><a href="#PhysicalMaterial.Strength">PhysicalMaterial.Strength</a></td>
+                  <td></td>
+                  <td><p>Physical Strength properties of the model= </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dynamic_friction</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Frictional force for dampening - Interpolate (0-1) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>static_friction</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Frictional force override at stop - Interpolate (0-1) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>restitution</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Restitution of the object - Interpolate (0-1) </p></td>
                 </tr>
               
                 <tr>
                   <td>deformable</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>should this object deform when encountering large forces - TODO: This needs a proper message and equation field </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</a></td>
+                  <td></td>
+                  <td><p>generic type to assign some default params </p></td>
                 </tr>
               
             </tbody>
@@ -1532,7 +1522,7 @@ The first object is a root container for all top level items </p></td>
                   <td></td>
                   <td><p>naming scheme changes here
 
-GPa </p></td>
+/ GPa </p></td>
                 </tr>
               
                 <tr>
@@ -1659,7 +1649,7 @@ GPa </p></td>
               <tr>
                 <td>METAL</td>
                 <td>0</td>
-                <td><p>default</p></td>
+                <td><p></p></td>
               </tr>
             
               <tr>
@@ -1728,8 +1718,8 @@ GPa </p></td>
 
         
       
-        <h3 id=".Edge">Edge</h3>
-        <p>Each edge contains another object and arbitrary data</p>
+        <h3 id=".EncodedData">EncodedData</h3>
+        <p>EncodedData</p><p>Defines a section of data encoded with a specific type</p><p>e.g. XML with a type specification</p>
 
         
           <table class="field-table">
@@ -1739,17 +1729,24 @@ GPa </p></td>
             <tbody>
               
                 <tr>
-                  <td>value</td>
-                  <td><a href="#string">string</a></td>
+                  <td>type</td>
+                  <td><a href="#DataType">DataType</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>enum for type parsing </p></td>
                 </tr>
               
                 <tr>
-                  <td>node</td>
-                  <td><a href="#Node">Node</a></td>
+                  <td>data</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>actual data output to parse </p></td>
+                </tr>
+              
+                <tr>
+                  <td>schema</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>format specifier to parse it with </p></td>
                 </tr>
               
             </tbody>
@@ -1822,7 +1819,7 @@ GPa </p></td>
         
       
         <h3 id=".Info">Info</h3>
-        <p>Info</p><p>Defines basic fields for almost all objects</p><p>The location where you can access the GUID for a reference</p>
+        <p>Defines basic fields for almost all objects</p><p>The location where you can access the GUID for a reference</p>
 
         
           <table class="field-table">
@@ -1880,8 +1877,15 @@ however endian becomes an issue </p></td>
               
                 <tr>
                   <td>children</td>
-                  <td><a href="#Edge">Edge</a></td>
+                  <td><a href="#Node">Node</a></td>
                   <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_data</td>
+                  <td><a href="#UserData">UserData</a></td>
+                  <td></td>
                   <td><p> </p></td>
                 </tr>
               
@@ -1901,13 +1905,6 @@ however endian becomes an issue </p></td>
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
-              
-                <tr>
-                  <td>friction</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
               
                 <tr>
                   <td>density</td>
@@ -1939,7 +1936,7 @@ however endian becomes an issue </p></td>
               
                 <tr>
                   <td>com</td>
-                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
+                  <td><a href="#Vector3">Vector3</a></td>
                   <td></td>
                   <td><p>non-negative? Vec3 </p></td>
                 </tr>
@@ -1951,70 +1948,8 @@ however endian becomes an issue </p></td>
 
         
       
-        <h3 id=".Rotation">Rotation</h3>
-        <p>This is only positive rotation</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>euler_x</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>euler_y</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>euler_z</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".SpatialTransformMatrix">SpatialTransformMatrix</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>values</td>
-                  <td><a href="#float">float</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id=".Transform">Transform</h3>
-        <p></p>
+        <p>Transform</p><p>Data needed to apply scale, position, and rotational changes</p>
 
         
           <table class="field-table">
@@ -2025,23 +1960,10 @@ however endian becomes an issue </p></td>
               
                 <tr>
                   <td>spatial_matrix</td>
-                  <td><a href="#SpatialTransformMatrix">SpatialTransformMatrix</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>translation</td>
-                  <td><a href="#Translation">Translation</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rotation</td>
-                  <td><a href="#Rotation">Rotation</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td><a href="#float">float</a></td>
+                  <td>repeated</td>
+                  <td><p>flat map of 4x4 transform matrix 
+  [00][01][02][03][10][11][12][13][20][21][22][23] </p></td>
                 </tr>
               
             </tbody>
@@ -2051,8 +1973,8 @@ however endian becomes an issue </p></td>
 
         
       
-        <h3 id=".Translation">Translation</h3>
-        <p>https://www.brainvoyager.com/bv/doc/UsersGuide/CoordsAndTransforms/SpatialTransformationMatrices.html#:~:text=Homogeneous%20coordinates%20(4%2Delement%20vectors,points%20and%203%2Drow%20matrices.</p>
+        <h3 id=".UserData">UserData</h3>
+        <p>UserData</p><p>Arbitrary data to append to a given message in map form</p>
 
         
           <table class="field-table">
@@ -2062,31 +1984,10 @@ however endian becomes an issue </p></td>
             <tbody>
               
                 <tr>
-                  <td>origin</td>
-                  <td><a href="#Vector3_f32">Vector3_f32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>x</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>y</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>z</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td>data</td>
+                  <td><a href="#UserData.DataEntry">UserData.DataEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>e.g. data[&#34;wheel&#34;] = &#34;yes&#34; </p></td>
                 </tr>
               
             </tbody>
@@ -2096,7 +1997,7 @@ however endian becomes an issue </p></td>
 
         
       
-        <h3 id=".Vector2_i32">Vector2_i32</h3>
+        <h3 id=".UserData.DataEntry">UserData.DataEntry</h3>
         <p></p>
 
         
@@ -2107,15 +2008,15 @@ however endian becomes an issue </p></td>
             <tbody>
               
                 <tr>
-                  <td>x</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
-                  <td>y</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -2127,7 +2028,7 @@ however endian becomes an issue </p></td>
 
         
       
-        <h3 id=".Vector3_f32">Vector3_f32</h3>
+        <h3 id=".Vector3">Vector3</h3>
         <p></p>
 
         
@@ -2154,89 +2055,6 @@ however endian becomes an issue </p></td>
                 <tr>
                   <td>z</td>
                   <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".Vector3_f64">Vector3_f64</h3>
-        <p>The Double equivalent - storage safe</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>x</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>y</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>z</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id=".Vector_i32">Vector_i32</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>x</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>y</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>z</td>
-                  <td><a href="#int32">int32</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>w</td>
-                  <td><a href="#int32">int32</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -2273,6 +2091,29 @@ however endian becomes an issue </p></td>
               <tr>
                 <td>Z</td>
                 <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id=".DataType">DataType</h3>
+        <p>Represents a type of data encoding</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>XML</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>JSON</td>
+                <td>1</td>
                 <td><p></p></td>
               </tr>
             
