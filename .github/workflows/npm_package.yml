@@ -25,7 +25,7 @@ jobs:
       - run: |
           cp ../../README.md ./README.md
 
-      - run: npm i
+      - run: npm i -g protobufjs
 
       - name: Generate JS Module
         run: pbjs -t static-module -w es6 --es6 -o mirabuf.js ../../*.proto --no-beautify --no-comments
