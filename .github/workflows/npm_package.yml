@@ -28,7 +28,7 @@ jobs:
           repository: ${{ github.repository }}
           excludes: prerelease, draft
 
-        run: |
+      - run: |
           version=$(echo ${{ steps.version.outputs.release }} | cut -c 1-)
           echo "::set-output name=version::$version"
 
