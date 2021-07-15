@@ -2,6 +2,8 @@ syntax = "proto3";
 
 import "types.proto";
 
+package mirabuf;
+
 
 /// THIS NEEDS TO BE RE-LOOKED OVER
 message Joints {

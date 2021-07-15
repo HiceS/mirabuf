@@ -3,6 +3,8 @@
 
 syntax = "proto3";
 
+package mirabuf;
+
 // Each proper object within the Graph - First one is Root
 message Node {
     string value = 1;

@@ -2,6 +2,8 @@ syntax = "proto3";
 
 import "types.proto";
 
+package mirabuf;
+
 /**
  * Represents a File or Set of Materials with Appearances and Physical Data
  * 
