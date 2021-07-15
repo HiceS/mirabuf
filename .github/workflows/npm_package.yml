@@ -19,7 +19,7 @@ jobs:
           node-version: 12
 
       - run: |
-          cp README.md libs/node/README.md
+          cp README.md libs/node/README.md \
           cd libs/node
 
       - run: npm i -g protobufjs
