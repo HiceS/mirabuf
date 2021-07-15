@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 10
 
       - id: version
         uses: pozetroninc/github-action-get-latest-release@master
@@ -38,7 +38,7 @@ jobs:
       - run: npm i -g protobufjs
 
       - name: Generate JS Module
-        run: pbjs -t static-module -w es6 --es6 -o mirabuf.js ../../*.proto --no-beautify --no-comments
+        run: pbjs -t static-module -w commonjs -o mirabuf.js ../../*.proto
 
       - name: Generate TS Bindings
         run: pbts -o mirabuf.d.ts mirabuf.js

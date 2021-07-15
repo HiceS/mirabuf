@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "3D Format for Physics Simulation",
   "main": "mirabuf.js",
+  "types": "mirabuf.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
