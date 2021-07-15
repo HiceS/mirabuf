@@ -48,7 +48,7 @@ jobs:
         with:
           package: "./libs/node/package.json"
           token: ${{ secrets.NPM_TOKEN }}
-          dry-run: true
+          dry-run: false
 
       - if: steps.publish.outputs.type != 'none'
         run: |
