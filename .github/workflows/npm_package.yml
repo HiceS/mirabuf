@@ -1,0 +1,41 @@
+name: NPM Package
+  
+on:  
+  release:
+    types:
+      - created
+
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - run: |
+          cp README.md libs/node/README.md
+          cd libs/node
+
+      - run: npm i -g protobufjs
+
+      - name: Generate JS Module
+        run: pbjs -t static-module -w es6 --es6 -o mirabuf.js ../../*.proto --no-beautify --no-comments
+
+      - name: Generate TS Bindings
+        run: pbts -o mirabuf.d.ts mirabuf.js
+
+      - id: publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          dry-run: true
+
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+            echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"

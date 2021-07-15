@@ -12,3 +12,5 @@
 !*/
 
 build/*.proto
+
+**/*node_modules
