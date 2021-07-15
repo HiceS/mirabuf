@@ -30,7 +30,7 @@ jobs:
 
       - name: update version
         run:  |
-            npm version ${{ steps.get-version-sem.outputs.version }}
+            npm version ${{ steps.version.outputs.release }} --no-git-tag-version
 
       - run: |
           cp ../../README.md ./README.md
