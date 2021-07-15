@@ -28,19 +28,12 @@ jobs:
           repository: ${{ github.repository }}
           excludes: prerelease, draft
 
-      - run: |
-          version=$(echo ${{ steps.version.outputs.release }} | cut -c 1-)
-          echo "::set-output name=version::$version"
-
       - name: update version
         run:  |
-            cd ./libs/node
             npm version ${{ steps.get-version-sem.outputs.version }}
 
       - run: |
           cp ../../README.md ./README.md
-          cd ./libs/node
-          npm version minor --force
 
       - run: npm i -g protobufjs
 
