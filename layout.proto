@@ -25,10 +25,10 @@ message AnalogInput {
 message Layout {
     string Id = 1;
     message ModifiedFields {
-        map<string, DigitalOutput> DOs = 1;
-        map<string, DigitalInput> DIs = 2;
-        map<string, AnalogOutput> AOs = 3;
-        map<string, AnalogInput> AIs = 4;
+        map<string, DigitalOutput> DOEntries = 1;
+        map<string, DigitalInput> DIEntries = 2;
+        map<string, AnalogOutput> AOEntries = 3;
+        map<string, AnalogInput> AIEntries = 4;
     }
     ModifiedFields Fields = 2;   
 }
