@@ -203,11 +203,11 @@
                 </li>
               
                 <li>
-                  <a href="#mirabuf.Part"><span class="badge">M</span>Part</a>
+                  <a href="#mirabuf.PartDefinition"><span class="badge">M</span>PartDefinition</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.PartDefinition"><span class="badge">M</span>PartDefinition</a>
+                  <a href="#mirabuf.PartInstance"><span class="badge">M</span>PartInstance</a>
                 </li>
               
                 <li>
@@ -238,36 +238,36 @@
             <ul>
               
                 <li>
-                  <a href="#mirabuf.Joint"><span class="badge">M</span>Joint</a>
+                  <a href="#mirabuf.joint.Joint"><span class="badge">M</span>Joint</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.Joints"><span class="badge">M</span>Joints</a>
+                  <a href="#mirabuf.joint.Joints"><span class="badge">M</span>Joints</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.Joints.JointsEntry"><span class="badge">M</span>Joints.JointsEntry</a>
+                  <a href="#mirabuf.joint.Joints.JointsEntry"><span class="badge">M</span>Joints.JointsEntry</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.RigidGroup"><span class="badge">M</span>RigidGroup</a>
+                  <a href="#mirabuf.joint.RigidGroup"><span class="badge">M</span>RigidGroup</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.RigidJoint"><span class="badge">M</span>RigidJoint</a>
+                  <a href="#mirabuf.joint.RigidJoint"><span class="badge">M</span>RigidJoint</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.RotationalJoint"><span class="badge">M</span>RotationalJoint</a>
+                  <a href="#mirabuf.joint.RotationalJoint"><span class="badge">M</span>RotationalJoint</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.SliderJoint"><span class="badge">M</span>SliderJoint</a>
+                  <a href="#mirabuf.joint.SliderJoint"><span class="badge">M</span>SliderJoint</a>
                 </li>
               
               
                 <li>
-                  <a href="#mirabuf.JointMotion"><span class="badge">E</span>JointMotion</a>
+                  <a href="#mirabuf.joint.JointMotion"><span class="badge">E</span>JointMotion</a>
                 </li>
               
               
@@ -332,40 +332,40 @@
             <ul>
               
                 <li>
-                  <a href="#mirabuf.Appearance"><span class="badge">M</span>Appearance</a>
+                  <a href="#mirabuf.material.Appearance"><span class="badge">M</span>Appearance</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.Material"><span class="badge">M</span>Material</a>
+                  <a href="#mirabuf.material.Materials"><span class="badge">M</span>Materials</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.Materials"><span class="badge">M</span>Materials</a>
+                  <a href="#mirabuf.material.Materials.AppearancesEntry"><span class="badge">M</span>Materials.AppearancesEntry</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.Materials.MaterialsEntry"><span class="badge">M</span>Materials.MaterialsEntry</a>
+                  <a href="#mirabuf.material.Materials.PhysicalMaterialsEntry"><span class="badge">M</span>Materials.PhysicalMaterialsEntry</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.PhysicalMaterial"><span class="badge">M</span>PhysicalMaterial</a>
+                  <a href="#mirabuf.material.PhysicalMaterial"><span class="badge">M</span>PhysicalMaterial</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.PhysicalMaterial.Mechanical"><span class="badge">M</span>PhysicalMaterial.Mechanical</a>
+                  <a href="#mirabuf.material.PhysicalMaterial.Mechanical"><span class="badge">M</span>PhysicalMaterial.Mechanical</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.PhysicalMaterial.Strength"><span class="badge">M</span>PhysicalMaterial.Strength</a>
+                  <a href="#mirabuf.material.PhysicalMaterial.Strength"><span class="badge">M</span>PhysicalMaterial.Strength</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.PhysicalMaterial.Thermal"><span class="badge">M</span>PhysicalMaterial.Thermal</a>
+                  <a href="#mirabuf.material.PhysicalMaterial.Thermal"><span class="badge">M</span>PhysicalMaterial.Thermal</a>
                 </li>
               
               
                 <li>
-                  <a href="#mirabuf.PhysicalMaterial.MaterialType"><span class="badge">E</span>PhysicalMaterial.MaterialType</a>
+                  <a href="#mirabuf.material.PhysicalMaterial.MaterialType"><span class="badge">E</span>PhysicalMaterial.MaterialType</a>
                 </li>
               
               
@@ -557,14 +557,14 @@
               
                 <tr>
                   <td>joints</td>
-                  <td><a href="#mirabuf.Joints">Joints</a></td>
+                  <td><a href="#mirabuf.joint.Joints">joint.Joints</a></td>
                   <td></td>
                   <td><p>Joint Definition Set </p></td>
                 </tr>
               
                 <tr>
                   <td>materials</td>
-                  <td><a href="#mirabuf.Materials">Materials</a></td>
+                  <td><a href="#mirabuf.material.Materials">material.Materials</a></td>
                   <td></td>
                   <td><p>Appearance and Physical Material Set </p></td>
                 </tr>
@@ -690,51 +690,6 @@
 
         
       
-        <h3 id="mirabuf.Part">Part</h3>
-        <p>Part</p><p>Represents a object that does not have to be unique</p><p>Can be an override for an existing definition</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>info</td>
-                  <td><a href="#mirabuf.Info">Info</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>part_definition_reference</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Reference to the Part Definition defined in Assembly Data </p></td>
-                </tr>
-              
-                <tr>
-                  <td>transform</td>
-                  <td><a href="#mirabuf.Transform">Transform</a></td>
-                  <td></td>
-                  <td><p>Overriding the object transform (moves the part from the def) </p></td>
-                </tr>
-              
-                <tr>
-                  <td>joints</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Joints that interact with this element </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="mirabuf.PartDefinition">PartDefinition</h3>
         <p>Part Definition</p><p>Unique Definition of a part that can be replicated.</p><p>Useful for keeping the object counter down in the scene.</p>
 
@@ -771,6 +726,51 @@
                   <td><a href="#mirabuf.Body">Body</a></td>
                   <td>repeated</td>
                   <td><p>Bodies to populate part </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.PartInstance">PartInstance</h3>
+        <p>Part</p><p>Represents a object that does not have to be unique</p><p>Can be an override for an existing definition</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>part_definition_reference</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reference to the Part Definition defined in Assembly Data </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transform</td>
+                  <td><a href="#mirabuf.Transform">Transform</a></td>
+                  <td></td>
+                  <td><p>Overriding the object transform (moves the part from the def) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>joints</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Joints that interact with this element </p></td>
                 </tr>
               
             </tbody>
@@ -868,7 +868,7 @@
               
                 <tr>
                   <td>value</td>
-                  <td><a href="#mirabuf.Part">Part</a></td>
+                  <td><a href="#mirabuf.PartInstance">PartInstance</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -946,7 +946,7 @@
       <p></p>
 
       
-        <h3 id="mirabuf.Joint">Joint</h3>
+        <h3 id="mirabuf.joint.Joint">Joint</h3>
         <p>Describes a Joint in the Fusion Context that can be interpreted by anything</p>
 
         
@@ -972,14 +972,14 @@
               
                 <tr>
                   <td>info</td>
-                  <td><a href="#mirabuf.Info">Info</a></td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>origin</td>
-                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
                   <td></td>
                   <td><p>3D origin point </p></td>
                 </tr>
@@ -1000,7 +1000,7 @@
               
                 <tr>
                   <td>JointMotionType</td>
-                  <td><a href="#mirabuf.JointMotion">JointMotion</a></td>
+                  <td><a href="#mirabuf.joint.JointMotion">JointMotion</a></td>
                   <td></td>
                   <td><p>type of motion described by the joint </p></td>
                 </tr>
@@ -1028,21 +1028,21 @@
               
                 <tr>
                   <td>RevoluteMotion</td>
-                  <td><a href="#mirabuf.RotationalJoint">RotationalJoint</a></td>
+                  <td><a href="#mirabuf.joint.RotationalJoint">RotationalJoint</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>SlideMotion</td>
-                  <td><a href="#mirabuf.SliderJoint">SliderJoint</a></td>
+                  <td><a href="#mirabuf.joint.SliderJoint">SliderJoint</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>RigidMotion</td>
-                  <td><a href="#mirabuf.RigidJoint">RigidJoint</a></td>
+                  <td><a href="#mirabuf.joint.RigidJoint">RigidJoint</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1054,7 +1054,7 @@
 
         
       
-        <h3 id="mirabuf.Joints">Joints</h3>
+        <h3 id="mirabuf.joint.Joints">Joints</h3>
         <p>THIS NEEDS TO BE RE-LOOKED OVER</p>
 
         
@@ -1066,14 +1066,14 @@
               
                 <tr>
                   <td>info</td>
-                  <td><a href="#mirabuf.Info">Info</a></td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>joints</td>
-                  <td><a href="#mirabuf.Joints.JointsEntry">Joints.JointsEntry</a></td>
+                  <td><a href="#mirabuf.joint.Joints.JointsEntry">Joints.JointsEntry</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
                 </tr>
@@ -1085,7 +1085,7 @@
 
         
       
-        <h3 id="mirabuf.Joints.JointsEntry">Joints.JointsEntry</h3>
+        <h3 id="mirabuf.joint.Joints.JointsEntry">Joints.JointsEntry</h3>
         <p></p>
 
         
@@ -1104,7 +1104,7 @@
               
                 <tr>
                   <td>value</td>
-                  <td><a href="#mirabuf.Joint">Joint</a></td>
+                  <td><a href="#mirabuf.joint.Joint">Joint</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1116,7 +1116,7 @@
 
         
       
-        <h3 id="mirabuf.RigidGroup">RigidGroup</h3>
+        <h3 id="mirabuf.joint.RigidGroup">RigidGroup</h3>
         <p></p>
 
         
@@ -1147,14 +1147,14 @@
 
         
       
-        <h3 id="mirabuf.RigidJoint">RigidJoint</h3>
+        <h3 id="mirabuf.joint.RigidJoint">RigidJoint</h3>
         <p></p>
 
         
 
         
       
-        <h3 id="mirabuf.RotationalJoint">RotationalJoint</h3>
+        <h3 id="mirabuf.joint.RotationalJoint">RotationalJoint</h3>
         <p>to specify vectors associated with rotational movement</p>
 
         
@@ -1166,14 +1166,14 @@
               
                 <tr>
                   <td>RotationAxis</td>
-                  <td><a href="#mirabuf.Axis">Axis</a></td>
+                  <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>AxisVector</td>
-                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1206,7 +1206,7 @@
 
         
       
-        <h3 id="mirabuf.SliderJoint">SliderJoint</h3>
+        <h3 id="mirabuf.joint.SliderJoint">SliderJoint</h3>
         <p>to specify vectors associated with rotational movement</p>
 
         
@@ -1218,14 +1218,14 @@
               
                 <tr>
                   <td>SlideAxis</td>
-                  <td><a href="#mirabuf.Axis">Axis</a></td>
+                  <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
                   <td>AxisVector</td>
-                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1260,7 +1260,7 @@
       
 
       
-        <h3 id="mirabuf.JointMotion">JointMotion</h3>
+        <h3 id="mirabuf.joint.JointMotion">JointMotion</h3>
         <p>Describes the joint</p>
         <table class="enum-table">
           <thead>
@@ -1663,7 +1663,7 @@
       <p></p>
 
       
-        <h3 id="mirabuf.Appearance">Appearance</h3>
+        <h3 id="mirabuf.material.Appearance">Appearance</h3>
         <p>Contains information on how a object looks</p><p>Limited to just color for now</p>
 
         
@@ -1674,31 +1674,38 @@
             <tbody>
               
                 <tr>
-                  <td>albedo</td>
-                  <td><a href="#mirabuf.Color">Color</a></td>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Identfiable information (id, name, version) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>albedo</td>
+                  <td><a href="#mirabuf.Color">mirabuf.Color</a></td>
+                  <td></td>
+                  <td><p>albedo map RGBA 0-255 </p></td>
                 </tr>
               
                 <tr>
                   <td>roughness</td>
-                  <td><a href="#float">float</a></td>
+                  <td><a href="#double">double</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>roughness value 0-1 </p></td>
                 </tr>
               
                 <tr>
                   <td>metallic</td>
-                  <td><a href="#float">float</a></td>
+                  <td><a href="#double">double</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>metallic value 0-1 </p></td>
                 </tr>
               
                 <tr>
                   <td>specular</td>
-                  <td><a href="#float">float</a></td>
+                  <td><a href="#double">double</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>specular value 0-1 </p></td>
                 </tr>
               
             </tbody>
@@ -1708,45 +1715,7 @@
 
         
       
-        <h3 id="mirabuf.Material">Material</h3>
-        <p>Contains the information regarding the appearance and physical properties</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>info</td>
-                  <td><a href="#mirabuf.Info">Info</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>appearance</td>
-                  <td><a href="#mirabuf.Appearance">Appearance</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>physicalMaterial</td>
-                  <td><a href="#mirabuf.PhysicalMaterial">PhysicalMaterial</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="mirabuf.Materials">Materials</h3>
+        <h3 id="mirabuf.material.Materials">Materials</h3>
         <p>Represents a File or Set of Materials with Appearances and Physical Data</p><p>Can be Stored in AssemblyData</p>
 
         
@@ -1758,16 +1727,23 @@
               
                 <tr>
                   <td>info</td>
-                  <td><a href="#mirabuf.Info">Info</a></td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
                   <td></td>
-                  <td><p>file info </p></td>
+                  <td><p>Identifiable information (id, name, version) </p></td>
                 </tr>
               
                 <tr>
-                  <td>materials</td>
-                  <td><a href="#mirabuf.Materials.MaterialsEntry">Materials.MaterialsEntry</a></td>
+                  <td>physicalMaterials</td>
+                  <td><a href="#mirabuf.material.Materials.PhysicalMaterialsEntry">Materials.PhysicalMaterialsEntry</a></td>
                   <td>repeated</td>
-                  <td><p> </p></td>
+                  <td><p>Map of Physical Materials </p></td>
+                </tr>
+              
+                <tr>
+                  <td>appearances</td>
+                  <td><a href="#mirabuf.material.Materials.AppearancesEntry">Materials.AppearancesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Map of Appearances that are purely visual </p></td>
                 </tr>
               
             </tbody>
@@ -1777,7 +1753,7 @@
 
         
       
-        <h3 id="mirabuf.Materials.MaterialsEntry">Materials.MaterialsEntry</h3>
+        <h3 id="mirabuf.material.Materials.AppearancesEntry">Materials.AppearancesEntry</h3>
         <p></p>
 
         
@@ -1796,7 +1772,7 @@
               
                 <tr>
                   <td>value</td>
-                  <td><a href="#mirabuf.Material">Material</a></td>
+                  <td><a href="#mirabuf.material.Appearance">Appearance</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1808,7 +1784,38 @@
 
         
       
-        <h3 id="mirabuf.PhysicalMaterial">PhysicalMaterial</h3>
+        <h3 id="mirabuf.material.Materials.PhysicalMaterialsEntry">Materials.PhysicalMaterialsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#mirabuf.material.PhysicalMaterial">PhysicalMaterial</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.material.PhysicalMaterial">PhysicalMaterial</h3>
         <p>Data to represent any given Physical Material</p>
 
         
@@ -1819,38 +1826,38 @@
             <tbody>
               
                 <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Identifiable information (id, name, version, etc) </p></td>
                 </tr>
               
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>short description of physical material </p></td>
                 </tr>
               
                 <tr>
                   <td>thermal</td>
-                  <td><a href="#mirabuf.PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</a></td>
+                  <td><a href="#mirabuf.material.PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</a></td>
                   <td></td>
-                  <td><p>Thermal Physical properties of the model </p></td>
+                  <td><p>Thermal Physical properties of the model OPTIONAL </p></td>
                 </tr>
               
                 <tr>
                   <td>mechanical</td>
-                  <td><a href="#mirabuf.PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</a></td>
+                  <td><a href="#mirabuf.material.PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</a></td>
                   <td></td>
-                  <td><p>Mechanical properties of the model </p></td>
+                  <td><p>Mechanical properties of the model OPTIONAL </p></td>
                 </tr>
               
                 <tr>
                   <td>strength</td>
-                  <td><a href="#mirabuf.PhysicalMaterial.Strength">PhysicalMaterial.Strength</a></td>
+                  <td><a href="#mirabuf.material.PhysicalMaterial.Strength">PhysicalMaterial.Strength</a></td>
                   <td></td>
-                  <td><p>Physical Strength properties of the model= </p></td>
+                  <td><p>Physical Strength properties of the model OPTIONAL </p></td>
                 </tr>
               
                 <tr>
@@ -1882,8 +1889,8 @@
                 </tr>
               
                 <tr>
-                  <td>type</td>
-                  <td><a href="#mirabuf.PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</a></td>
+                  <td>matType</td>
+                  <td><a href="#mirabuf.material.PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</a></td>
                   <td></td>
                   <td><p>generic type to assign some default params </p></td>
                 </tr>
@@ -1895,8 +1902,8 @@
 
         
       
-        <h3 id="mirabuf.PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</h3>
-        <p></p>
+        <h3 id="mirabuf.material.PhysicalMaterial.Mechanical">PhysicalMaterial.Mechanical</h3>
+        <p>Mechanical Properties Set Definition for Simulation.</p>
 
         
           <table class="field-table">
@@ -1949,8 +1956,8 @@
 
         
       
-        <h3 id="mirabuf.PhysicalMaterial.Strength">PhysicalMaterial.Strength</h3>
-        <p></p>
+        <h3 id="mirabuf.material.PhysicalMaterial.Strength">PhysicalMaterial.Strength</h3>
+        <p>Strength Properties Set Definition for Simulation.</p>
 
         
           <table class="field-table">
@@ -1987,8 +1994,8 @@
 
         
       
-        <h3 id="mirabuf.PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</h3>
-        <p></p>
+        <h3 id="mirabuf.material.PhysicalMaterial.Thermal">PhysicalMaterial.Thermal</h3>
+        <p>Thermal Properties Set Definition for Simulation.</p>
 
         
           <table class="field-table">
@@ -2027,7 +2034,7 @@
       
 
       
-        <h3 id="mirabuf.PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</h3>
+        <h3 id="mirabuf.material.PhysicalMaterial.MaterialType">PhysicalMaterial.MaterialType</h3>
         <p></p>
         <table class="enum-table">
           <thead>
