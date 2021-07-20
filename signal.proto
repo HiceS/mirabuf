@@ -37,7 +37,7 @@ message Signal {
 }
 
 /**
- * Signals is a container for all of the ptoential signals.
+ * Signals is a container for all of the potential signals.
  */
 message Signals {
     Info info = 1;  /// Has identifiable data (id, name, version)
