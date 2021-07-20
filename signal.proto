@@ -14,17 +14,6 @@ enum IOType {
 }
 
 /**
- * Format is used to define the expected message format.
- * 
- */
-enum Format {
-    DIGITAL = 0; /// Digital Format 
-    ANALOG = 1;  /// Analog Format
-    PWM = 2;     /// PWM Format
-    I2C = 3;     /// I2C Format
-}
-
-/**
  * Signal is a way to define a controlling signal.
  * 
  * TODO: Add Origin
@@ -33,7 +22,7 @@ enum Format {
 message Signal {
     Info info = 1;  /// Has identifiable data (id, name, version)
     IOType io = 2;  /// Is this a Input or Output
-    Format signal_format = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
+    string class = 3; /// Is this a PWM, Digital, Analog, I2C, etc. 
 }
 
 /**
