@@ -41,8 +41,8 @@ message Assembly {
  */
 message AssemblyData {
     Parts parts = 1;    /// Meshes and Design Objects
-    Joints joints = 2;  /// Joint Definition Set
-    Materials materials = 3; /// Appearance and Physical Material Set
+    joint.Joints joints = 2;  /// Joint Definition Set
+    material.Materials materials = 3; /// Appearance and Physical Material Set
 }
 
 // Part file can be exported seperately in the future
@@ -51,7 +51,7 @@ message Parts {
     /// Map of the Exported Part Definitions
     map<string, PartDefinition> part_definitions = 2;
     /// Map of the Exported Parts that make up the object
-    map<string, Part> part_instances = 3;
+    map<string, PartInstance> part_instances = 3;
 }
 
 /**
@@ -74,7 +74,7 @@ message PartDefinition {
 * Represents a object that does not have to be unique
 * Can be an override for an existing definition
 */
-message Part {
+message PartInstance {
     Info info = 1;
     /// Reference to the Part Definition defined in Assembly Data
     string part_definition_reference = 2;
@@ -82,6 +82,9 @@ message Part {
     Transform transform = 3;
     /// Joints that interact with this element
     repeated string joints = 4;
+    
+    string appearance = 5; /// Appearance Reference to link to `Materials->Appearance->Info->id`
+    string physical_material = 6; /// Physical Material Reference to link to `Materials->PhysicalMaterial->Info->id`
 }
 
 /* 
@@ -95,8 +98,8 @@ message Body {
     string part = 2;
     /// Triangle Mesh for rendering
     TriangleMesh triangle_mesh = 3;
-    /// Material Reference 
-    string material = 4;
+
+    string appearance_override = 4; /// Override Visual Appearance for the body
 }
 
 /**
