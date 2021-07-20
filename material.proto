@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "types.proto";
 
-package mirabuf;
+package mirabuf.material;
 
 /**
  * Represents a File or Set of Materials with Appearances and Physical Data
@@ -10,18 +10,9 @@ package mirabuf;
  * Can be Stored in AssemblyData
  */
 message Materials {
-    // file info
-    Info info = 1;
-    map<string, Material> materials = 2;
-}
-
-/**
- * Contains the information regarding the appearance and physical properties
- */
-message Material {
-    Info info = 1;
-    Appearance appearance = 2;
-    PhysicalMaterial physicalMaterial = 3;
+    Info info = 1; /// Identifiable information (id, name, version)
+    map<string, PhysicalMaterial> physicalMaterials = 2; /// Map of Physical Materials
+    map<string, Appearance> appearances = 3; /// Map of Appearances that are purely visual
 }
 
 /**
@@ -29,10 +20,11 @@ message Material {
  * Limited to just color for now
  */
 message Appearance {
-    Color albedo = 1;
-    float roughness = 2;
-    float metallic = 3;
-    float specular = 4;
+    Info info = 1;  /// Identfiable information (id, name, version)
+    Color albedo = 2;   /// albedo map RGBA 0-255
+    double roughness = 3; /// roughness value 0-1
+    double metallic = 4;  /// metallic value 0-1
+    double specular = 5;  /// specular value 0-1
 }
 
 /**
@@ -45,39 +37,48 @@ message PhysicalMaterial {
         PLASTIC = 1;
     }
  
+    /**
+     * Thermal Properties Set Definition for Simulation.
+     */
     message Thermal {
         float thermal_conductivity = 1; /// W/(m*K)
         float specific_heat = 2;        /// J/(g*C)
         float thermal_expansion_coefficient = 3; /// um/(m*C)
     }
 
+    /**
+     * Mechanical Properties Set Definition for Simulation.
+     */
     message Mechanical {
         // naming scheme changes here
         float young_mod = 1;        /// GPa
         float poisson_ratio = 2;    /// ?
         float shear_mod = 3;        /// MPa
         float density = 4;          /// g/cm^3
-        float damping_coefficient = 5; // ?
-    }
-
-    message Strength {
-        float yield_strength = 1;       /// MPa
-        float tensile_strength = 2;     /// MPa
-        bool thermal_treatment = 3;     /// yes / no
+        float damping_coefficient = 5; /// ?
     }
     
-    string name = 1;
-    string description = 2;
+    /**
+     * Strength Properties Set Definition for Simulation.
+     */
+    message Strength {
+        float yield_strength = 1;   /// MPa
+        float tensile_strength = 2; /// MPa
+        bool thermal_treatment = 3; /// yes / no
+    }
+    
+    Info info = 1;              /// Identifiable information (id, name, version, etc)
+    string description = 2;     /// short description of physical material
 
-    Thermal thermal = 3;        /// Thermal Physical properties of the model
-    Mechanical mechanical = 4;  /// Mechanical properties of the model
-    Strength strength = 5;      /// Physical Strength properties of the model=
+    Thermal thermal = 3;        /// Thermal Physical properties of the model OPTIONAL
+    Mechanical mechanical = 4;  /// Mechanical properties of the model OPTIONAL
+    Strength strength = 5;      /// Physical Strength properties of the model OPTIONAL
 
     float dynamic_friction = 6; /// Frictional force for dampening - Interpolate (0-1)
     float static_friction = 7;  /// Frictional force override at stop - Interpolate (0-1)
     float restitution = 8;      /// Restitution of the object - Interpolate (0-1)
 
-    bool deformable = 9;    /// should this object deform when encountering large forces - TODO: This needs a proper message and equation field
-    MaterialType type = 10;  /// generic type to assign some default params
+    bool deformable = 9;        /// should this object deform when encountering large forces - TODO: This needs a proper message and equation field
+    MaterialType matType = 10;  /// generic type to assign some default params
 
 }

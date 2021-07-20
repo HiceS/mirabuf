@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "types.proto";
 
-package mirabuf;
+package mirabuf.joint;
 
 
 /// THIS NEEDS TO BE RE-LOOKED OVER
