@@ -33,7 +33,7 @@ enum Format {
 message Signal {
     Info info = 1;  /// Has identifiable data (id, name, version)
     IOType io = 2;  /// Is this a Input or Output
-    Format signalFormat = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
+    Format signal_format = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
 }
 
 /**
@@ -41,7 +41,7 @@ message Signal {
  */
 message Signals {
     Info info = 1;  /// Has identifiable data (id, name, version)
-    map<string, Signal> signalMap = 2; /// Contains a full collection of symbols
+    map<string, Signal> signal_map = 2; /// Contains a full collection of symbols
 
     // 1. Look at each Signal
     // 2. Decide if it's input or ouput
