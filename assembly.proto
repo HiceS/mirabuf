@@ -7,7 +7,6 @@ option optimize_for = SPEED;
 import "types.proto";
 import "joint.proto";
 import "material.proto";
-import "layout.proto";
 
 message Assemblies {
     repeated Assembly assemblies = 1;
@@ -32,8 +31,6 @@ message Assembly {
     GraphContainer joint_hierarchy = 6;
     /// The Transform in space currently
     Transform transform = 7;
-    /// Layout of controllable inputs and outputs
-    Layout layout = 8;
 }
 
 /**
