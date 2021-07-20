@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+import "types.proto";
+
+package mirabuf.signal;
+
+/**
+ * IOType is a way to specify Input or Output.
+ * 
+ */
+enum IOType {
+    INPUT = 0;  /// Input Signal
+    OUTPUT = 1; /// Output Signal
+}
+
+/**
+ * Format is used to define the expected message format.
+ * 
+ */
+enum Format {
+    DIGITAL = 0; /// Digital Format 
+    ANALOG = 1;  /// Analog Format
+    PWM = 2;     /// PWM Format
+    I2C = 3;     /// I2C Format
+}
+
+/**
+ * Signal is a way to define a controlling signal.
+ * 
+ * TODO: Add Origin
+ * TODO: Decide how this is linked to a exported object
+ */
+message Signal {
+    Info info = 1;  /// Has identifiable data (id, name, version)
+    IOType io = 2;  /// Is this a Input or Output
+    Format signalFormat = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
+}
+
+/**
+ * Signals is a container for all of the ptoential signals.
+ */
+message Signals {
+    Info info = 1;  /// Has identifiable data (id, name, version)
+    map<string, Signal> signalMap = 2; /// Contains a full collection of symbols
+
+    // 1. Look at each Signal
+    // 2. Decide if it's input or ouput
+    // 3. Decide if it's Digital, Analog, PWM
+    // 4. Then append to an according list / create according item
+}
