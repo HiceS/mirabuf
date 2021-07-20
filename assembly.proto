@@ -79,6 +79,9 @@ message PartInstance {
     Transform transform = 3;
     /// Joints that interact with this element
     repeated string joints = 4;
+    
+    string appearance = 5; /// Appearance Reference to link to `Materials->Appearance->Info->id`
+    string physical_material = 6; /// Physical Material Reference to link to `Materials->PhysicalMaterial->Info->id`
 }
 
 /* 
@@ -92,8 +95,8 @@ message Body {
     string part = 2;
     /// Triangle Mesh for rendering
     TriangleMesh triangle_mesh = 3;
-    /// Material Reference 
-    string material = 4;
+
+    string appearance_override = 4; /// Override Visual Appearance for the body
 }
 
 /**
