@@ -9,6 +9,7 @@ package mirabuf.joint;
 message Joints {
     Info info = 1;
     map<string, Joint> joints = 2;
+    repeated RigidGroup rigidGroups = 3;
 }
 
 // Describes the joint
