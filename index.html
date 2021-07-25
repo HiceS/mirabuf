@@ -238,6 +238,18 @@
             <ul>
               
                 <li>
+                  <a href="#mirabuf.joint.CustomJoint"><span class="badge">M</span>CustomJoint</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.joint.DOF"><span class="badge">M</span>DOF</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.joint.Dynamics"><span class="badge">M</span>Dynamics</a>
+                </li>
+              
+                <li>
                   <a href="#mirabuf.joint.Joint"><span class="badge">M</span>Joint</a>
                 </li>
               
@@ -250,11 +262,15 @@
                 </li>
               
                 <li>
-                  <a href="#mirabuf.joint.RigidGroup"><span class="badge">M</span>RigidGroup</a>
+                  <a href="#mirabuf.joint.Limits"><span class="badge">M</span>Limits</a>
                 </li>
               
                 <li>
-                  <a href="#mirabuf.joint.RigidJoint"><span class="badge">M</span>RigidJoint</a>
+                  <a href="#mirabuf.joint.PrismaticJoint"><span class="badge">M</span>PrismaticJoint</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.joint.RigidGroup"><span class="badge">M</span>RigidGroup</a>
                 </li>
               
                 <li>
@@ -262,7 +278,7 @@
                 </li>
               
                 <li>
-                  <a href="#mirabuf.joint.SliderJoint"><span class="badge">M</span>SliderJoint</a>
+                  <a href="#mirabuf.joint.Safety"><span class="badge">M</span>Safety</a>
                 </li>
               
               
@@ -936,6 +952,120 @@
       <p></p>
 
       
+        <h3 id="mirabuf.joint.CustomJoint">CustomJoint</h3>
+        <p>CustomJoint is a joint with N degrees of freedom specified.</p><p>There should be input validation to handle max freedom case.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>dofs</td>
+                  <td><a href="#mirabuf.joint.DOF">DOF</a></td>
+                  <td>repeated</td>
+                  <td><p>A list of degrees of freedom that the joint can contain </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.joint.DOF">DOF</h3>
+        <p>For a single DOF there is data to derive at most 1 degree of freedom.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>In case you want to name this degree of freedom </p></td>
+                </tr>
+              
+                <tr>
+                  <td>axis</td>
+                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
+                  <td></td>
+                  <td><p>Axis the degree of freedom is pivoting by </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pivotDirection</td>
+                  <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
+                  <td></td>
+                  <td><p>Direction the axis vector is offset from </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dynamics</td>
+                  <td><a href="#mirabuf.joint.Dynamics">Dynamics</a></td>
+                  <td></td>
+                  <td><p>Dynamic properties of this joint pivot </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limits</td>
+                  <td><a href="#mirabuf.joint.Limits">Limits</a></td>
+                  <td></td>
+                  <td><p>Limits of this freedom </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Current value of the DOF </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.joint.Dynamics">Dynamics</h3>
+        <p>Dynamics specify the mechanical effects on the motion.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>damping</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Damping effect on a given joint motion </p></td>
+                </tr>
+              
+                <tr>
+                  <td>friction</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Friction effect on a given joint motion </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="mirabuf.joint.Joint">Joint</h3>
         <p>Describes a Joint in the Fusion Context that can be interpreted by anything</p>
 
@@ -947,94 +1077,73 @@
             <tbody>
               
                 <tr>
-                  <td>Part1</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>Part2</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
                   <td>info</td>
                   <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Joint name, ID, version, etc </p></td>
+                </tr>
+              
+                <tr>
+                  <td>parent</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Object that contains the joint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>child</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Object that is affected by the joint </p></td>
                 </tr>
               
                 <tr>
                   <td>origin</td>
                   <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
                   <td></td>
-                  <td><p>3D origin point </p></td>
+                  <td><p>Transform relative to the parent </p></td>
                 </tr>
               
                 <tr>
-                  <td>Offset</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p>offsets from the origin points </p></td>
-                </tr>
-              
-                <tr>
-                  <td>Angle</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>JointMotionType</td>
+                  <td>joint_motion_type</td>
                   <td><a href="#mirabuf.joint.JointMotion">JointMotion</a></td>
                   <td></td>
                   <td><p>type of motion described by the joint </p></td>
                 </tr>
               
                 <tr>
-                  <td>MaximumValue</td>
-                  <td><a href="#double">double</a></td>
+                  <td>break_magnitude</td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>fusion joint parameters </p></td>
+                  <td><p>At what effort does it come apart at. - leave blank if it doesn&#39;t </p></td>
                 </tr>
               
                 <tr>
-                  <td>MinimumValue</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>RestValue</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>RevoluteMotion</td>
+                  <td>rotational</td>
                   <td><a href="#mirabuf.joint.RotationalJoint">RotationalJoint</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
-                  <td>SlideMotion</td>
-                  <td><a href="#mirabuf.joint.SliderJoint">SliderJoint</a></td>
+                  <td>prismatic</td>
+                  <td><a href="#mirabuf.joint.PrismaticJoint">PrismaticJoint</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
               
                 <tr>
-                  <td>RigidMotion</td>
-                  <td><a href="#mirabuf.joint.RigidJoint">RigidJoint</a></td>
+                  <td>custom</td>
+                  <td><a href="#mirabuf.joint.CustomJoint">CustomJoint</a></td>
                   <td></td>
                   <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user_data</td>
+                  <td><a href="#mirabuf.UserData">mirabuf.UserData</a></td>
+                  <td></td>
+                  <td><p>Additional information someone can query or store relative to your joint. </p></td>
                 </tr>
               
             </tbody>
@@ -1069,7 +1178,7 @@
                 </tr>
               
                 <tr>
-                  <td>rigidGroups</td>
+                  <td>rigid_groups</td>
                   <td><a href="#mirabuf.joint.RigidGroup">RigidGroup</a></td>
                   <td>repeated</td>
                   <td><p> </p></td>
@@ -1113,6 +1222,89 @@
 
         
       
+        <h3 id="mirabuf.joint.Limits">Limits</h3>
+        <p>Limits specify the mechanical range of a given joint.</p><p>TODO: Add units</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>lower</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Lower Limit corresponds to default displacement </p></td>
+                </tr>
+              
+                <tr>
+                  <td>upper</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Upper Limit is the joint extent </p></td>
+                </tr>
+              
+                <tr>
+                  <td>velocity</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Velocity Max in m/s^2 (angular for rotational) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.joint.PrismaticJoint">PrismaticJoint</h3>
+        <p>Prismatic Joint describes a motion that translates the position in a single axis</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>axis</td>
+                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dynamcis</td>
+                  <td><a href="#mirabuf.joint.Dynamics">Dynamics</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limits</td>
+                  <td><a href="#mirabuf.joint.Limits">Limits</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pivotDirection</td>
+                  <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
+                  <td></td>
+                  <td><p>Direction the axis vector is offset from </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="mirabuf.joint.RigidGroup">RigidGroup</h3>
         <p></p>
 
@@ -1144,15 +1336,8 @@
 
         
       
-        <h3 id="mirabuf.joint.RigidJoint">RigidJoint</h3>
-        <p></p>
-
-        
-
-        
-      
         <h3 id="mirabuf.joint.RotationalJoint">RotationalJoint</h3>
-        <p>to specify vectors associated with rotational movement</p>
+        <p>RotationalJoint describes a joint with rotational translation.</p><p>This is the exact same as prismatic for now.</p>
 
         
           <table class="field-table">
@@ -1162,38 +1347,10 @@
             <tbody>
               
                 <tr>
-                  <td>RotationAxis</td>
-                  <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
+                  <td>rotational_freedom</td>
+                  <td><a href="#mirabuf.joint.DOF">DOF</a></td>
                   <td></td>
                   <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>AxisVector</td>
-                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>MaxValue</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p>in radians </p></td>
-                </tr>
-              
-                <tr>
-                  <td>MinValue</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p>in radians </p></td>
-                </tr>
-              
-                <tr>
-                  <td>CurrentValue</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p>in radians </p></td>
                 </tr>
               
             </tbody>
@@ -1203,8 +1360,8 @@
 
         
       
-        <h3 id="mirabuf.joint.SliderJoint">SliderJoint</h3>
-        <p>to specify vectors associated with rotational movement</p>
+        <h3 id="mirabuf.joint.Safety">Safety</h3>
+        <p>Safety switch configuration for a given joint.</p><p>Can usefully indicate a bounds issue.</p><p>Inspired by the URDF implementation.</p><p>This should really just be created by the controller.</p><p>http://wiki.ros.org/pr2_controller_manager/safety_limits</p>
 
         
           <table class="field-table">
@@ -1214,38 +1371,31 @@
             <tbody>
               
                 <tr>
-                  <td>SlideAxis</td>
-                  <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
+                  <td>lower_limit</td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Lower software limit </p></td>
                 </tr>
               
                 <tr>
-                  <td>AxisVector</td>
-                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
+                  <td>upper_limit</td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Upper Software limit </p></td>
                 </tr>
               
                 <tr>
-                  <td>MaxValue</td>
-                  <td><a href="#double">double</a></td>
+                  <td>k_position</td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Relation between position and velocity limit </p></td>
                 </tr>
               
                 <tr>
-                  <td>MinValue</td>
-                  <td><a href="#double">double</a></td>
+                  <td>k_velocity</td>
+                  <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>CurrentValue</td>
-                  <td><a href="#double">double</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td><p>Relation between effort and velocity limit </p></td>
                 </tr>
               
             </tbody>
@@ -1266,44 +1416,50 @@
           <tbody>
             
               <tr>
-                <td>Rigid</td>
+                <td>RIGID</td>
                 <td>0</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>Revolute</td>
+                <td>REVOLUTE</td>
                 <td>1</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>Slider</td>
+                <td>SLIDER</td>
                 <td>2</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>Cylindrical</td>
+                <td>CYLINDRICAL</td>
                 <td>3</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>PinSlot</td>
+                <td>PINSLOT</td>
                 <td>4</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>Planar</td>
+                <td>PLANAR</td>
                 <td>5</td>
                 <td><p></p></td>
               </tr>
             
               <tr>
-                <td>BallJoint</td>
+                <td>BALL</td>
                 <td>6</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CUSTOM</td>
+                <td>7</td>
                 <td><p></p></td>
               </tr>
             
