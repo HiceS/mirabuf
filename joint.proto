@@ -8,22 +8,14 @@ package mirabuf.joint;
 // You can have a closed chain mechanism or Four-bar (closed loop)
 // Or multiple paths with closed loop like a stewart platform
 
-// Are joint constraints independent ?
-
-// dof
-// dof = 6(N-1-J)+SUM<j->i=1>(fi)
-// m is always 6 in this case
-// N is bodies represented as moving components
-// J is joints represented as connections between bodies
-
-
 message Joints {
-    Info info = 1;
-    map<string, Joint> joints = 2;
-    repeated RigidGroup rigid_groups = 3;
+    Info info = 1;  /// name, version, uid
+    map<string, Joint> joint_defintions = 2;    /// Unique Joint Implementations
+    map<string, JointInstance> joint_instances = 3; /// Instances of the Joint Implementations
+    repeated RigidGroup rigid_groups = 4;   /// Rigidgroups ?
 }
 
-// Describes the joint
+// Describes the joint - Not really sure what to do with this for now - TBD
 enum JointMotion {
     RIGID = 0;
     REVOLUTE = 1;
@@ -35,37 +27,56 @@ enum JointMotion {
     CUSTOM = 7;
 }
 
-// Describes a Joint in the Fusion Context that can be interpreted by anything 
-message Joint {
-
+/**
+ * Instance of a Joint that has a defined motion and limits
+ */
+message JointInstance {
     /// Joint name, ID, version, etc
     Info info = 1;
-    
+
     // Object that contains the joint - the ID
     string parent = 2;
 
     // Object that is affected by the joint - the ID
     string child = 3;
 
+    // Reference to the Joint Definition
+    string joint_reference = 4;
+
+    // Offset from Joint Definition Origin
+    Vector3 offset = 5;
+
+    // Part Instances all contained and affected by this joint directly - tree
+    GraphContainer parts = 6;
+}
+
+/**
+ * A unqiue implementation of a joint motion
+ * Contains information about motion but not assembly relation
+ */
+message Joint {
+    /// Joint name, ID, version, etc
+    Info info = 1;
+
     // Transform relative to the parent
-    Vector3 origin = 4;
+    Vector3 origin = 2;
 
     // type of motion described by the joint
-    JointMotion joint_motion_type = 5;
+    JointMotion joint_motion_type = 3;
 
     // At what effort does it come apart at. - leave blank if it doesn't
-    float break_magnitude = 6;  
+    float break_magnitude = 4;  
 
     // The actual motion of the joint
     oneof JointMotion {
-        RotationalJoint rotational = 7; /// ONEOF rotational joint
-        PrismaticJoint prismatic = 8;   /// ONEOF prismatic joint
-        CustomJoint custom = 9;         /// ONEOF custom joint
+        RotationalJoint rotational = 5; /// ONEOF rotational joint
+        PrismaticJoint prismatic = 6;   /// ONEOF prismatic joint
+        CustomJoint custom = 7;         /// ONEOF custom joint
         // todo reserve some spaces here or get rid of the oneof entirely
     }
 
     /// Additional information someone can query or store relative to your joint.
-    UserData user_data = 10;
+    UserData user_data = 8;
 }
 
 /**
