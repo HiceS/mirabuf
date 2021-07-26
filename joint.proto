@@ -10,7 +10,7 @@ package mirabuf.joint;
 
 message Joints {
     Info info = 1;  /// name, version, uid
-    map<string, Joint> joint_defintions = 2;    /// Unique Joint Implementations
+    map<string, Joint> joint_definitions = 2;    /// Unique Joint Implementations
     map<string, JointInstance> joint_instances = 3; /// Instances of the Joint Implementations
     repeated RigidGroup rigid_groups = 4;   /// Rigidgroups ?
 }
