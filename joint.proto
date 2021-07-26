@@ -17,7 +17,6 @@ package mirabuf.joint;
 // J is joints represented as connections between bodies
 
 
-/// THIS NEEDS TO BE RE-LOOKED OVER
 message Joints {
     Info info = 1;
     map<string, Joint> joints = 2;
@@ -42,10 +41,10 @@ message Joint {
     /// Joint name, ID, version, etc
     Info info = 1;
     
-    // Object that contains the joint
+    // Object that contains the joint - the ID
     string parent = 2;
 
-    // Object that is affected by the joint
+    // Object that is affected by the joint - the ID
     string child = 3;
 
     // Transform relative to the parent
@@ -54,13 +53,15 @@ message Joint {
     // type of motion described by the joint
     JointMotion joint_motion_type = 5;
 
-    float break_magnitude = 6;  /// At what effort does it come apart at. - leave blank if it doesn't
+    // At what effort does it come apart at. - leave blank if it doesn't
+    float break_magnitude = 6;  
 
     // The actual motion of the joint
     oneof JointMotion {
-        RotationalJoint rotational = 7;
-        PrismaticJoint prismatic = 8;
-        CustomJoint custom = 9;
+        RotationalJoint rotational = 7; /// ONEOF rotational joint
+        PrismaticJoint prismatic = 8;   /// ONEOF prismatic joint
+        CustomJoint custom = 9;         /// ONEOF custom joint
+        // todo reserve some spaces here or get rid of the oneof entirely
     }
 
     /// Additional information someone can query or store relative to your joint.
@@ -133,10 +134,7 @@ message RotationalJoint {
  * Prismatic Joint describes a motion that translates the position in a single axis
  */
 message PrismaticJoint {
-    Vector3 axis = 1; 
-    Dynamics dynamcis = 2;
-    Limits limits = 3;
-    Axis pivotDirection = 4; /// Direction the axis vector is offset from
+    DOF prismatic_freedom = 1;
 }
 
 message RigidGroup {

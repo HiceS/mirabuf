@@ -75,13 +75,15 @@ message PartInstance {
     Info info = 1;
     /// Reference to the Part Definition defined in Assembly Data
     string part_definition_reference = 2;
-    /// Overriding the object transform (moves the part from the def)
+    /// Overriding the object transform (moves the part from the def) - in design hierarchy context
     Transform transform = 3;
+    /// Position transform from a global scope
+    Transform global_transform = 4;
     /// Joints that interact with this element
-    repeated string joints = 4;
+    repeated string joints = 5;
     
-    string appearance = 5; /// Appearance Reference to link to `Materials->Appearance->Info->id`
-    string physical_material = 6; /// Physical Material Reference to link to `Materials->PhysicalMaterial->Info->id`
+    string appearance = 6; /// Appearance Reference to link to `Materials->Appearance->Info->id`
+    string physical_material = 7; /// Physical Material Reference to link to `Materials->PhysicalMaterial->Info->id`
 }
 
 /* 

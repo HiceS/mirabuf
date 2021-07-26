@@ -7,9 +7,9 @@ package mirabuf;
 
 // Each proper object within the Graph - First one is Root
 message Node {
-    string value = 1;
-    repeated Node children = 2;
-    UserData user_data = 3;
+    string value = 1;   /// the reference ID for whatever kind of graph this is
+    repeated Node children = 2; /// the children for the given leaf
+    UserData user_data = 3; /// other associated data that can be used
 }
 
 // Top level GraphContainer
