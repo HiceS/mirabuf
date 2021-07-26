@@ -28,16 +28,17 @@ enum JointMotion {
 }
 
 /**
- * Instance of a Joint that has a defined motion and limits
+ * Instance of a Joint that has a defined motion and limits.
+ * Instancing helps with identifiy closed loop systems.
  */
 message JointInstance {
     /// Joint name, ID, version, etc
     Info info = 1;
 
-    // Object that contains the joint - the ID
+    // Object that contains the joint - the ID - Part usually
     string parent = 2;
 
-    // Object that is affected by the joint - the ID
+    // Object that is affected by the joint - the ID - Part usually
     string child = 3;
 
     // Reference to the Joint Definition
