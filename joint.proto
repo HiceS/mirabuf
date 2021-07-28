@@ -32,23 +32,26 @@ enum JointMotion {
  * Instancing helps with identifiy closed loop systems.
  */
 message JointInstance {
-    /// Joint name, ID, version, etc
+    // Joint name, ID, version, etc
     Info info = 1;
 
+    // Is this joint the end effector in the tree ? - might remove this
+    bool isEndEffector = 2;
+
     // Object that contains the joint - the ID - Part usually
-    string parent = 2;
+    string parent_part = 3;
 
     // Object that is affected by the joint - the ID - Part usually
-    string child = 3;
+    string child_part= 4;
 
     // Reference to the Joint Definition
-    string joint_reference = 4;
+    string joint_reference = 5;
 
     // Offset from Joint Definition Origin
-    Vector3 offset = 5;
+    Vector3 offset = 6;
 
     // Part Instances all contained and affected by this joint directly - tree
-    GraphContainer parts = 6;
+    GraphContainer parts = 7;
 }
 
 /**
@@ -140,6 +143,12 @@ message CustomJoint {
  */
 message RotationalJoint {
     DOF rotational_freedom = 1;
+}
+
+message BallJoint {
+    DOF yaw = 1;
+    DOF pitch = 2;
+    DOF rotation = 3;
 }
 
 /**

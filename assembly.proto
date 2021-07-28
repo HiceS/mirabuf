@@ -44,11 +44,17 @@ message AssemblyData {
 
 // Part file can be exported seperately in the future
 message Parts {
+    /// Part name, version, GUID
     Info info = 1;
+
     /// Map of the Exported Part Definitions
     map<string, PartDefinition> part_definitions = 2;
+
     /// Map of the Exported Parts that make up the object
     map<string, PartInstance> part_instances = 3;
+    
+    /// other associated data that can be used
+    UserData user_data = 4; // end effector, wheel, etc
 }
 
 /**

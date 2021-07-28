@@ -13,8 +13,9 @@ message Node {
 }
 
 // Top level GraphContainer
-// Contains all Graph elemebt roots within
+// Contains all Graph element roots within
 message GraphContainer {
+    // represents the root of each seperate assembly - most of the time 1 node
     repeated Node nodes = 1;
 }
 
