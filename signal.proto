@@ -23,7 +23,7 @@ enum IOType {
 message Signal {
     Info info = 1;  /// Has identifiable data (id, name, version)
     IOType io = 2;  /// Is this a Input or Output
-    string class = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
+    string device_type = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
 }
 
 /**
