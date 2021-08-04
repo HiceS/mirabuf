@@ -7,6 +7,7 @@ option optimize_for = SPEED;
 import "types.proto";
 import "joint.proto";
 import "material.proto";
+import "signal.proto";
 
 message Assemblies {
     repeated Assembly assemblies = 1;
@@ -40,6 +41,7 @@ message AssemblyData {
     Parts parts = 1;    /// Meshes and Design Objects
     joint.Joints joints = 2;  /// Joint Definition Set
     material.Materials materials = 3; /// Appearance and Physical Material Set
+    signal.Signals signals = 4; // Contains table of all signals with ID reference
 }
 
 // Part file can be exported seperately in the future

@@ -52,6 +52,9 @@ message JointInstance {
 
     // Part Instances all contained and affected by this joint directly - tree
     GraphContainer parts = 7;
+
+    // Reference to the Signals as Drivers - use for signal_map in Assembly Data
+    string signal_reference = 8;
 }
 
 /**
