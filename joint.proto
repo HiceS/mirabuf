@@ -8,6 +8,10 @@ package mirabuf.joint;
 // You can have a closed chain mechanism or Four-bar (closed loop)
 // Or multiple paths with closed loop like a stewart platform
 
+/**
+ * Joints
+ * A way to define the motion between various group connections
+ */
 message Joints {
     Info info = 1;  /// name, version, uid
     map<string, Joint> joint_definitions = 2;    /// Unique Joint Implementations
@@ -72,7 +76,7 @@ message Joint {
     JointMotion joint_motion_type = 3;
 
     // At what effort does it come apart at. - leave blank if it doesn't
-    float break_magnitude = 4;  
+    float break_magnitude = 4;
 
     // The actual motion of the joint
     oneof JointMotion {
@@ -103,6 +107,8 @@ message Limits {
     float lower = 1;    /// Lower Limit corresponds to default displacement
     float upper = 2;    /// Upper Limit is the joint extent
     float velocity = 3; /// Velocity Max in m/s^2 (angular for rotational)
+    /// Effort is the absolute force a joint can apply for a given instant - ROS has a great article on it http://wiki.ros.org/pr2_controller_manager/safety_limits
+    float effort = 4;
 }
 
 /**
@@ -121,7 +127,7 @@ message Safety {
 }
 
 /**
- * For a single DOF there is data to derive at most 1 degree of freedom.
+ * DOF - representing the construction of a joint motion
  */
 message DOF {
     string name = 1;   /// In case you want to name this degree of freedom

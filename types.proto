@@ -115,6 +115,6 @@ message FileTypeInformation {
     string name = 1;
     /// extension used in file
     string extension = 2;
-    /// unix timestamp
+    /// unix timestamp - this seems unnecessary
     string timestamp = 3;
 }

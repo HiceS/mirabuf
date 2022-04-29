@@ -1,6 +1,6 @@
 {
   "name": "mirabuf",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "3D Format for Physics Simulation",
   "main": "mirabuf.js",
   "types": "mirabuf.d.ts",

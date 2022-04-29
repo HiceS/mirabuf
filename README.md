@@ -22,12 +22,7 @@ You can find build artifacts from the latest build under the Actions Tab
 
 Documentation is available as a Build Artifact for now in the GenerateDocs build action.
 
-
 ## Building
-
-#### Build
-
-` protoc -I=. --python_out=./libs/python --java_out=./libs/java --cpp_out=./libs/cpp ./build/mirabuf.proto `
 
 ### Build All - Seperate
 
@@ -76,11 +71,12 @@ I opt to use [protobufjs](https://www.npmjs.com/package/protobufjs) to generate 
 
 If you want a zero library implementation you can use the default js_out and rip the build artifact typing.
 
-* Before compiling with this take the time to figure out if commonjs is the right module for you and look over the cli arguments to configure it for however you want to use it. *
+__Before compiling with this take the time to figure out if commonjs is the right module for you and look over the cli arguments to configure it for however you want to use it.__
 
-` npm i -g protobufjs && mkdir libs/node`
+`npm i -g protobufjs && mkdir libs/node`
 
-` pbjs -t static-module -w commonjs -o libs/node/mirabuf.js *.proto `
+`pbjs -t static-module -w commonjs -o libs/node/mirabuf.js *.proto`
 
-` pbts -o mirabuf.d.ts mirabuf.js `
+`cd ./libs/node`
 
+`pbts -o mirabuf.d.ts mirabuf.js`

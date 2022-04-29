@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "types.proto";
+
+package mirabuf;
+
+/**
+ * World Object
+ * Contains World Simulation settings if present
+ */
+message World {
+    Info info = 1;   /// Basic information (Identifier, Name, Version)
+    string value = 2;   /// the reference ID for whatever kind of graph this is
+}

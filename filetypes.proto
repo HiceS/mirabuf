@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+import "types.proto";
+
+package mirabuf.filetypes;
+
+/// Describes the type of file so we know what to do once we fetch it
+enum SupportedFileType {
+    /// Simulation format by Us
+    MIRA = 0;
+    /// Scene format by Kronos
+    GLTF = 1;
+    /// Mesh format by Waveform
+    OBJ = 2;
+    reserved 3,4,5;
+    /// Not supported yet
+    USD = 6;
+    /// Not supported yet
+    USDZ = 7;
+    /// Not supported yet
+    STEP = 8;
+    /// Not supported yet
+    URDF = 9;
+}
+
+/**
+ * Cloud
+ * Message for defining a CloudFile
+ * To be fetched from a data server
+ */
+ message CloudFile {
+    /// 1 and 2 are reserved in case we need to verify the authenticity with a hash later down the road
+    reserved 1, 2;
+    /// Directly resolvable to the file perhaps - perhaps we should replicate a query
+    string url = 3;
+    /// Determine if this is supported for translations
+    SupportedFileType file_type = 4;
+    /// File Information Optional
+    FileTypeInformation file_info = 5;
+}
+
+/**
+ * Cloud
+ * Message for defining a CloudFile
+ * To be fetched from a data server
+ */
+ message LocalFile {
+    /// 1 and 2 are reserved in case we need to verify the authenticity with a hash later down the road
+    reserved 1, 2;
+    /// Resolvable to a unique place in the File System - Or in a shared FS
+    string absolutePath = 3;
+    /// Determine if this is supported for translations
+    SupportedFileType file_type = 4;
+    /// File Information Optional
+    FileTypeInformation file_info = 5;
+}
