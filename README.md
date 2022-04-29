@@ -1,14 +1,14 @@
-## Mira 3D Format   
+# Mira 3D Format
 
 [![npm version](https://badge.fury.io/js/mirabuf.svg)](https://badge.fury.io/js/mirabuf)
 
 Builds:
 
-[![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml) 
+[![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml)
 
 Documentation:
 
-[DOCUMENTATION SITE](https://www.mirabuf.dev/) 
+[DOCUMENTATION SITE](https://www.mirabuf.dev/)
 
 [![GenerateDocs](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml/badge.svg?branch=main)](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml)
 
@@ -37,7 +37,7 @@ go, c#, swift, rust, node can have additional dependencies
 #### Go
 
 ` go install google.golang.org/protobuf/cmd/protoc-gen-go `
-` protoc -I=. --go_out=./libs/go ./*.proto ` 
+` protoc -I=. --go_out=./libs/go ./*.proto `
 
 #### Java
 
