@@ -11,4 +11,10 @@ package mirabuf;
 message World {
     Info info = 1;   /// Basic information (Identifier, Name, Version)
     string value = 2;   /// the reference ID for whatever kind of graph this is
+    Vector3 gravity = 3;    /// Vec3 for gravity init
+    float dt = 4;   /// Time between steps
+    float velocity_iterations = 5;  /// Optional for solver
+    float position_iterations = 6;  /// Optional for solver
+
+    bytes serialized_frame = 15;    /// Optional for saving the entire world as a serialized frame
 }

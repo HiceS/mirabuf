@@ -48,7 +48,8 @@ message AssemblyReference {
 
     message Instance {
         Info info = 1;      /// Unique Instance ID that can be controlled individually
-        Transform transform_override = 2;   /// Transform in world space that is unique for this instance
+        map<string, PhysicsRecord> physics_record = 2;  /// Record of object as it is moving in the simulation - for each Joint Group
+        Transform transform_override = 3;   /// Transform in world space that is unique for this instance
         // More info here for overriding colors etc in the future I suppose
         // Or something idk
     }
