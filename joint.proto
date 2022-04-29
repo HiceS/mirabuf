@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "types.proto";
+import "motor.proto";
 
 package mirabuf.joint;
 
@@ -17,6 +18,7 @@ message Joints {
     map<string, Joint> joint_definitions = 2;    /// Unique Joint Implementations
     map<string, JointInstance> joint_instances = 3; /// Instances of the Joint Implementations
     repeated RigidGroup rigid_groups = 4;   /// Rigidgroups ?
+    map<string, motor.Motor> motor_definitions = 5;   /// Collection of all Motors exported
 }
 
 // Describes the joint - Not really sure what to do with this for now - TBD
@@ -64,6 +66,7 @@ message JointInstance {
 /**
  * A unqiue implementation of a joint motion
  * Contains information about motion but not assembly relation
+ * NOTE: A spring motion is a joint with no driver
  */
 message Joint {
     /// Joint name, ID, version, etc
@@ -88,6 +91,8 @@ message Joint {
 
     /// Additional information someone can query or store relative to your joint.
     UserData user_data = 8;
+
+    string motor_reference = 9;     /// Motor definition reference to lookup in joints collection
 }
 
 /**
@@ -132,7 +137,7 @@ message Safety {
 message DOF {
     string name = 1;   /// In case you want to name this degree of freedom
     Vector3 axis = 2;  /// Axis the degree of freedom is pivoting by
-    Axis pivotDirection = 3;  /// Direction the axis vector is offset from
+    Axis pivotDirection = 3;  /// Direction the axis vector is offset from - this has an incorrect naming scheme
     Dynamics dynamics = 4;  /// Dynamic properties of this joint pivot
     Limits limits = 5;  /// Limits of this freedom
     float value = 6; /// Current value of the DOF
