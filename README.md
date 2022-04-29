@@ -1,16 +1,4 @@
-# Mira 3D Format
-
-[![npm version](https://badge.fury.io/js/mirabuf.svg)](https://badge.fury.io/js/mirabuf)
-
-Builds:
-
-[![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml)
-
-Documentation:
-
-[DOCUMENTATION SITE](https://www.mirabuf.dev/)
-
-[![GenerateDocs](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml/badge.svg?branch=main)](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml)
+# Mira 3D Format  [![npm version](https://badge.fury.io/js/mirabuf.svg)](https://badge.fury.io/js/mirabuf) [![GenerateDocs](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml/badge.svg?branch=main)](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml) [![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml)
 
 Open source file definition for storing, rendering, and translating physical data from generic 3D model assemblies.
 
@@ -21,6 +9,9 @@ You can find build artifacts from the latest build under the Actions Tab
 - java
 
 Documentation is available as a Build Artifact for now in the GenerateDocs build action.
+
+[DOCUMENTATION SITE](https://www.mirabuf.dev/)
+
 
 ## Building
 
