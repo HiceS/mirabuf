@@ -1,16 +1,4 @@
-## Mira 3D Format   
-
-[![npm version](https://badge.fury.io/js/mirabuf.svg)](https://badge.fury.io/js/mirabuf)
-
-Builds:
-
-[![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml) 
-
-Documentation:
-
-[DOCUMENTATION SITE](https://www.mirabuf.dev/) 
-
-[![GenerateDocs](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml/badge.svg?branch=main)](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml)
+# Mira 3D Format  [![npm version](https://badge.fury.io/js/mirabuf.svg)](https://badge.fury.io/js/mirabuf) [![GenerateDocs](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml/badge.svg?branch=main)](https://github.com/HiceS/mirabuf/actions/workflows/docs_gen.yml) [![BuildProto](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml/badge.svg)](https://github.com/HiceS/mirabuf/actions/workflows/proto_compile.yml)
 
 Open source file definition for storing, rendering, and translating physical data from generic 3D model assemblies.
 
@@ -22,12 +10,10 @@ You can find build artifacts from the latest build under the Actions Tab
 
 Documentation is available as a Build Artifact for now in the GenerateDocs build action.
 
+[DOCUMENTATION SITE](https://www.mirabuf.dev/)
+
 
 ## Building
-
-#### Build
-
-` protoc -I=. --python_out=./libs/python --java_out=./libs/java --cpp_out=./libs/cpp ./build/mirabuf.proto `
 
 ### Build All - Seperate
 
@@ -42,7 +28,7 @@ go, c#, swift, rust, node can have additional dependencies
 #### Go
 
 ` go install google.golang.org/protobuf/cmd/protoc-gen-go `
-` protoc -I=. --go_out=./libs/go ./*.proto ` 
+` protoc -I=. --go_out=./libs/go ./*.proto `
 
 #### Java
 
@@ -76,11 +62,12 @@ I opt to use [protobufjs](https://www.npmjs.com/package/protobufjs) to generate 
 
 If you want a zero library implementation you can use the default js_out and rip the build artifact typing.
 
-* Before compiling with this take the time to figure out if commonjs is the right module for you and look over the cli arguments to configure it for however you want to use it. *
+__Before compiling with this take the time to figure out if commonjs is the right module for you and look over the cli arguments to configure it for however you want to use it.__
 
-` npm i -g protobufjs && mkdir libs/node`
+`npm i -g protobufjs && mkdir libs/node`
 
-` pbjs -t static-module -w commonjs -o libs/node/mirabuf.js *.proto `
+`pbjs -t static-module -w commonjs -o libs/node/mirabuf.js *.proto`
 
-` pbts -o mirabuf.d.ts mirabuf.js `
+`cd ./libs/node`
 
+`pbts -o mirabuf.d.ts mirabuf.js`

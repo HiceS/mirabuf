@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+import "types.proto";
+
+package mirabuf.motor;
+
+/**
+ * Duty Cycles for electric motors
+ * Affects the dynamic output of the motor
+ * https://www.news.benevelli-group.com/index.php/en/88-what-motor-duty-cycle.html
+ * These each have associated data we are not going to use right now
+ */
+enum DutyCycles {
+    /// S1
+    CONTINUOUS_RUNNING = 0;
+    /// S2
+    SHORT_TIME = 1;
+    /// S3
+    INTERMITTENT_PERIODIC = 2;
+    /// S6 Continuous Operation with Periodic Duty
+    CONTINUOUS_PERIODIC = 3;
+}
+
+/**
+ * A Motor should determine the relationship between an input and joint motion
+ * Could represent something like a DC Motor relationship
+ */
+ message Motor {
+    Info info = 1;
+    oneof motor_type {
+        DCMotor dc_motor = 2;
+    }
+    reserved 3 to 5;
+}
+
+/**
+ * DCMotor Configuration
+ * Parameters to simulate a DC Electric Motor
+ * Still needs some more but overall they are most of the parameters we can use
+ */
+message DCMotor {
+    reserved 1;
+    string reference_url = 2;   /// Reference for purchase page or spec sheet
+    float torque_constant = 3;  /// m-Nm/Amp
+    float emf_constant = 4;     /// mV/rad/sec
+    float resistance = 5;       /// Resistance of Motor - Optional if other values are known
+    uint32 maximum_effeciency = 6;      /// measure in percentage of 100 - generally around 60 - measured under optimal load
+    uint32 maximum_power = 7;           /// measured in Watts
+    DutyCycles duty_cycle = 8;          /// Stated Duty Cycle of motor
+    reserved 9 to 15;
+
+    /// Information usually found on datasheet
+    message Advanced {
+        float free_current = 1;     /// measured in AMPs
+        uint32 free_speed = 2;      /// measured in RPM
+        float stall_current = 3;    /// measure in AMPs
+        float stall_torque = 4;     /// measured in in-oz
+        uint32 input_voltage = 5;   /// measured in Volts DC
+        float resistance_variation = 7;     /// between (K * (N / 4)) and (K * ((N-2) / 4)) where N is number of poles - leave at 0 if unknown
+    }
+
+    Advanced advanced = 16;  /// Optional data that can give a better relationship to the simulation
+}

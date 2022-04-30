@@ -76,6 +76,17 @@ message Transform {
     repeated float spatial_matrix = 1;
 }
 
+/**
+ * Record for instantiating a moving object
+ * Useful for storing moving objects
+ */
+message PhysicsRecord {
+    string id = 1;
+    repeated float spatial_matrix = 2;
+    Vector3 angular_velocity = 3;
+    Vector3 linear_velocity = 4;
+}
+
 // RGBA in expanded form 0-255
 message Color {
     // red 
@@ -115,6 +126,6 @@ message FileTypeInformation {
     string name = 1;
     /// extension used in file
     string extension = 2;
-    /// unix timestamp
+    /// unix timestamp - this seems unnecessary
     string timestamp = 3;
 }

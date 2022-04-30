@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "types.proto";
+import "motor.proto";
 
 package mirabuf.joint;
 
@@ -8,11 +9,16 @@ package mirabuf.joint;
 // You can have a closed chain mechanism or Four-bar (closed loop)
 // Or multiple paths with closed loop like a stewart platform
 
+/**
+ * Joints
+ * A way to define the motion between various group connections
+ */
 message Joints {
     Info info = 1;  /// name, version, uid
     map<string, Joint> joint_definitions = 2;    /// Unique Joint Implementations
     map<string, JointInstance> joint_instances = 3; /// Instances of the Joint Implementations
     repeated RigidGroup rigid_groups = 4;   /// Rigidgroups ?
+    map<string, motor.Motor> motor_definitions = 5;   /// Collection of all Motors exported
 }
 
 // Describes the joint - Not really sure what to do with this for now - TBD
@@ -60,6 +66,7 @@ message JointInstance {
 /**
  * A unqiue implementation of a joint motion
  * Contains information about motion but not assembly relation
+ * NOTE: A spring motion is a joint with no driver
  */
 message Joint {
     /// Joint name, ID, version, etc
@@ -72,7 +79,7 @@ message Joint {
     JointMotion joint_motion_type = 3;
 
     // At what effort does it come apart at. - leave blank if it doesn't
-    float break_magnitude = 4;  
+    float break_magnitude = 4;
 
     // The actual motion of the joint
     oneof JointMotion {
@@ -84,6 +91,8 @@ message Joint {
 
     /// Additional information someone can query or store relative to your joint.
     UserData user_data = 8;
+
+    string motor_reference = 9;     /// Motor definition reference to lookup in joints collection
 }
 
 /**
@@ -103,6 +112,8 @@ message Limits {
     float lower = 1;    /// Lower Limit corresponds to default displacement
     float upper = 2;    /// Upper Limit is the joint extent
     float velocity = 3; /// Velocity Max in m/s^2 (angular for rotational)
+    /// Effort is the absolute force a joint can apply for a given instant - ROS has a great article on it http://wiki.ros.org/pr2_controller_manager/safety_limits
+    float effort = 4;
 }
 
 /**
@@ -121,12 +132,12 @@ message Safety {
 }
 
 /**
- * For a single DOF there is data to derive at most 1 degree of freedom.
+ * DOF - representing the construction of a joint motion
  */
 message DOF {
     string name = 1;   /// In case you want to name this degree of freedom
     Vector3 axis = 2;  /// Axis the degree of freedom is pivoting by
-    Axis pivotDirection = 3;  /// Direction the axis vector is offset from
+    Axis pivotDirection = 3;  /// Direction the axis vector is offset from - this has an incorrect naming scheme
     Dynamics dynamics = 4;  /// Dynamic properties of this joint pivot
     Limits limits = 5;  /// Limits of this freedom
     float value = 6; /// Current value of the DOF
