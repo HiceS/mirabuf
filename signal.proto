@@ -27,6 +27,18 @@ enum IOType {
 }
 
 /**
+ * DeviceType needs to be a type of device that has a supported connection
+ * As well as a signal frmae but that can come later
+ */
+enum DeviceType {
+    PWM = 0;
+    Digital = 1;
+    Analog = 2;
+    I2C = 3;
+    CANBUS = 4;
+}
+
+/**
  * Signal is a way to define a controlling signal.
  * 
  * TODO: Add Origin
@@ -35,6 +47,8 @@ enum IOType {
 message Signal {
     Info info = 1;  /// Has identifiable data (id, name, version)
     IOType io = 2;  /// Is this a Input or Output
-    string device_type = 3; /// Is this a PWM, Digital, Analog, I2C, etc.
+    string device_type = 3; /// Is this a PWM, Digital, Analog, I2C, etc. OLD DEPRECATED
+    uint32 signal_id = 4;   /// ID for a given signal that exists... PWM 2, CANBUS 4
+    DeviceType device_type_enum = 5; /// Enum for device type that should always be set
 }
 
