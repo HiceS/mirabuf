@@ -1,8 +1,6 @@
 syntax = "proto3";
 
-import "types.proto";
-
-package mirabuf.filetypes;
+package miraworld.filetypes;
 
 /// Describes the type of file so we know what to do once we fetch it
 enum SupportedFileType {
@@ -35,8 +33,6 @@ enum SupportedFileType {
     string url = 3;
     /// Determine if this is supported for translations
     SupportedFileType file_type = 4;
-    /// File Information Optional
-    FileTypeInformation file_info = 5;
 }
 
 /**
@@ -51,6 +47,4 @@ enum SupportedFileType {
     string absolutePath = 3;
     /// Determine if this is supported for translations
     SupportedFileType file_type = 4;
-    /// File Information Optional
-    FileTypeInformation file_info = 5;
 }
