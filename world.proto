@@ -1,20 +1,73 @@
+/**
+ * This file represents a secondary file that can be used to save world information 
+ * It contains a list of existing assemblies and their instance information as it is associated
+ */
+
 syntax = "proto3";
 
 import "types.proto";
+import "filetypes.proto";
 
-package mirabuf;
+package miraworld;
+
+/**
+ * World Package File
+ * Contains many assemblies to be packaged together
+ * This object can be loaded directly or you can load a single Assembly
+ * Also contains information about how the world is constructed
+ */
+ message World {
+    mirabuf.Info info = 1;
+    /// World Settings and Information
+    WorldSettings settings = 2;
+    /// Set of assemblies in the world
+    repeated AssemblyReference assemblies = 3;
+}
+
+/**
+ * Assembly Reference
+ * Contains references to an assembly
+ * Can have a reference to any of the following
+ * - Cloud (Cloud Fetched Document)
+ * - Local FS (File System Document Path)
+ */
+message AssemblyReference {
+    /// Info contains a unqiue ID for the given instance of an assembly
+    mirabuf.Info info = 1;
+    /// Assembly Type will result in how to assembly exists in the world
+    oneof assembly_type {
+        filetypes.CloudFile cloud = 2; /// Stored as Cloud File to be fetched and referenced
+        filetypes.LocalFile local = 3; /// Stored as a Local Filesystem File to be requested
+    }
+    /// for future assembly_types
+    reserved 4 to 8;
+
+    message Instance {
+        mirabuf.Info info = 1;      /// Unique Instance ID that can be controlled individually
+        map<string, mirabuf.PhysicsRecord> physics_record = 2;  /// Record of object as it is moving in the simulation - for each Joint Group
+        mirabuf.Transform transform_override = 3;   /// Transform in world space that is unique for this instance
+        // More info here for overriding colors etc in the future I suppose
+        // Or something idk
+    }
+    /// The Total number of instances to create in simulation
+    repeated Instance instances = 9;
+    /// for future connections
+    reserved 10 to 40;
+}
 
 /**
  * World Object
  * Contains World Simulation settings if present
  */
-message World {
-    Info info = 1;   /// Basic information (Identifier, Name, Version)
+message WorldSettings {
+    mirabuf.Info info = 1;   /// Basic information (Identifier, Name, Version)
     string value = 2;   /// the reference ID for whatever kind of graph this is
-    Vector3 gravity = 3;    /// Vec3 for gravity init
+    mirabuf.Vector3 gravity = 3;    /// Vec3 for gravity init
     float dt = 4;   /// Time between steps
     float velocity_iterations = 5;  /// Optional for solver
     float position_iterations = 6;  /// Optional for solver
 
     bytes serialized_frame = 15;    /// Optional for saving the entire world as a serialized frame
 }
+
+// TODO - Add record data later

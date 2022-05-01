@@ -30,7 +30,7 @@ jobs:
 
       - name: pull protoc-gen-docs
         run:  |
-          go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+          go install -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
 
       - name: Compile Documentation
         run:  |

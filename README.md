@@ -12,6 +12,11 @@ Documentation is available as a Build Artifact for now in the GenerateDocs build
 
 [DOCUMENTATION SITE](https://www.mirabuf.dev/)
 
+NOTE:
+
+Currently there are actually two different file formats that are connected here, the Assembly and the World.
+
+You do not need to have the World file to run just the Exporter.
 
 ## Building
 
