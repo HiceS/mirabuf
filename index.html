@@ -179,10 +179,6 @@
             <ul>
               
                 <li>
-                  <a href="#mirabuf.Assemblies"><span class="badge">M</span>Assemblies</a>
-                </li>
-              
-                <li>
                   <a href="#mirabuf.Assembly"><span class="badge">M</span>Assembly</a>
                 </li>
               
@@ -234,6 +230,29 @@
         
           
           <li>
+            <a href="#filetypes.proto">filetypes.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#miraworld.filetypes.CloudFile"><span class="badge">M</span>CloudFile</a>
+                </li>
+              
+                <li>
+                  <a href="#miraworld.filetypes.LocalFile"><span class="badge">M</span>LocalFile</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#miraworld.filetypes.SupportedFileType"><span class="badge">E</span>SupportedFileType</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#joint.proto">joint.proto</a>
             <ul>
               
@@ -271,6 +290,10 @@
               
                 <li>
                   <a href="#mirabuf.joint.Joints.JointInstancesEntry"><span class="badge">M</span>Joints.JointInstancesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.joint.Joints.MotorDefinitionsEntry"><span class="badge">M</span>Joints.MotorDefinitionsEntry</a>
                 </li>
               
                 <li>
@@ -352,6 +375,33 @@
         
           
           <li>
+            <a href="#motor.proto">motor.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#mirabuf.motor.DCMotor"><span class="badge">M</span>DCMotor</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.motor.DCMotor.Advanced"><span class="badge">M</span>DCMotor.Advanced</a>
+                </li>
+              
+                <li>
+                  <a href="#mirabuf.motor.Motor"><span class="badge">M</span>Motor</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#mirabuf.motor.DutyCycles"><span class="badge">E</span>DutyCycles</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#signal.proto">signal.proto</a>
             <ul>
               
@@ -367,6 +417,10 @@
                   <a href="#mirabuf.signal.Signals.SignalMapEntry"><span class="badge">M</span>Signals.SignalMapEntry</a>
                 </li>
               
+              
+                <li>
+                  <a href="#mirabuf.signal.DeviceType"><span class="badge">E</span>DeviceType</a>
+                </li>
               
                 <li>
                   <a href="#mirabuf.signal.IOType"><span class="badge">E</span>IOType</a>
@@ -411,6 +465,10 @@
                 </li>
               
                 <li>
+                  <a href="#mirabuf.PhysicsRecord"><span class="badge">M</span>PhysicsRecord</a>
+                </li>
+              
+                <li>
                   <a href="#mirabuf.Transform"><span class="badge">M</span>Transform</a>
                 </li>
               
@@ -440,6 +498,37 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#world.proto">world.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#miraworld.AssemblyReference"><span class="badge">M</span>AssemblyReference</a>
+                </li>
+              
+                <li>
+                  <a href="#miraworld.AssemblyReference.Instance"><span class="badge">M</span>AssemblyReference.Instance</a>
+                </li>
+              
+                <li>
+                  <a href="#miraworld.AssemblyReference.Instance.PhysicsRecordEntry"><span class="badge">M</span>AssemblyReference.Instance.PhysicsRecordEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#miraworld.World"><span class="badge">M</span>World</a>
+                </li>
+              
+                <li>
+                  <a href="#miraworld.WorldSettings"><span class="badge">M</span>WorldSettings</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -452,32 +541,8 @@
       <p></p>
 
       
-        <h3 id="mirabuf.Assemblies">Assemblies</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>assemblies</td>
-                  <td><a href="#mirabuf.Assembly">Assembly</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="mirabuf.Assembly">Assembly</h3>
-        <p>Assembly</p><p>Base Design to be interacted with</p>
+        <p>Assembly</p><p>Base Design to be interacted with</p><p>THIS IS THE CURRENT FILE EXPORTED</p>
 
         
           <table class="field-table">
@@ -982,6 +1047,135 @@ end effector, wheel, etc </p></td>
     
       
       <div class="file-heading">
+        <h2 id="filetypes.proto">filetypes.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="miraworld.filetypes.CloudFile">CloudFile</h3>
+        <p>Cloud</p><p>Message for defining a CloudFile</p><p>To be fetched from a data server</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Directly resolvable to the file perhaps - perhaps we should replicate a query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>file_type</td>
+                  <td><a href="#miraworld.filetypes.SupportedFileType">SupportedFileType</a></td>
+                  <td></td>
+                  <td><p>Determine if this is supported for translations </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="miraworld.filetypes.LocalFile">LocalFile</h3>
+        <p>Cloud</p><p>Message for defining a CloudFile</p><p>To be fetched from a data server</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>absolutePath</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resolvable to a unique place in the File System - Or in a shared FS </p></td>
+                </tr>
+              
+                <tr>
+                  <td>file_type</td>
+                  <td><a href="#miraworld.filetypes.SupportedFileType">SupportedFileType</a></td>
+                  <td></td>
+                  <td><p>Determine if this is supported for translations </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="miraworld.filetypes.SupportedFileType">SupportedFileType</h3>
+        <p>Describes the type of file so we know what to do once we fetch it</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MIRA</td>
+                <td>0</td>
+                <td><p>Simulation format by Us</p></td>
+              </tr>
+            
+              <tr>
+                <td>GLTF</td>
+                <td>1</td>
+                <td><p>Scene format by Kronos</p></td>
+              </tr>
+            
+              <tr>
+                <td>OBJ</td>
+                <td>2</td>
+                <td><p>Mesh format by Waveform</p></td>
+              </tr>
+            
+              <tr>
+                <td>USD</td>
+                <td>6</td>
+                <td><p>Not supported yet</p></td>
+              </tr>
+            
+              <tr>
+                <td>USDZ</td>
+                <td>7</td>
+                <td><p>Not supported yet</p></td>
+              </tr>
+            
+              <tr>
+                <td>STEP</td>
+                <td>8</td>
+                <td><p>Not supported yet</p></td>
+              </tr>
+            
+              <tr>
+                <td>URDF</td>
+                <td>9</td>
+                <td><p>Not supported yet</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
         <h2 id="joint.proto">joint.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
@@ -1050,7 +1244,7 @@ end effector, wheel, etc </p></td>
         
       
         <h3 id="mirabuf.joint.DOF">DOF</h3>
-        <p>For a single DOF there is data to derive at most 1 degree of freedom.</p>
+        <p>DOF - representing the construction of a joint motion</p>
 
         
           <table class="field-table">
@@ -1077,7 +1271,7 @@ end effector, wheel, etc </p></td>
                   <td>pivotDirection</td>
                   <td><a href="#mirabuf.Axis">mirabuf.Axis</a></td>
                   <td></td>
-                  <td><p>Direction the axis vector is offset from </p></td>
+                  <td><p>Direction the axis vector is offset from - this has an incorrect naming scheme </p></td>
                 </tr>
               
                 <tr>
@@ -1140,7 +1334,7 @@ end effector, wheel, etc </p></td>
         
       
         <h3 id="mirabuf.joint.Joint">Joint</h3>
-        <p>A unqiue implementation of a joint motion</p><p>Contains information about motion but not assembly relation</p>
+        <p>A unqiue implementation of a joint motion</p><p>Contains information about motion but not assembly relation</p><p>NOTE: A spring motion is a joint with no driver</p>
 
         
           <table class="field-table">
@@ -1203,6 +1397,13 @@ end effector, wheel, etc </p></td>
                   <td><a href="#mirabuf.UserData">mirabuf.UserData</a></td>
                   <td></td>
                   <td><p>Additional information someone can query or store relative to your joint. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>motor_reference</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Motor definition reference to lookup in joints collection </p></td>
                 </tr>
               
             </tbody>
@@ -1286,7 +1487,7 @@ end effector, wheel, etc </p></td>
         
       
         <h3 id="mirabuf.joint.Joints">Joints</h3>
-        <p></p>
+        <p>Joints</p><p>A way to define the motion between various group connections</p>
 
         
           <table class="field-table">
@@ -1321,6 +1522,13 @@ end effector, wheel, etc </p></td>
                   <td><a href="#mirabuf.joint.RigidGroup">RigidGroup</a></td>
                   <td>repeated</td>
                   <td><p>Rigidgroups ? </p></td>
+                </tr>
+              
+                <tr>
+                  <td>motor_definitions</td>
+                  <td><a href="#mirabuf.joint.Joints.MotorDefinitionsEntry">Joints.MotorDefinitionsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Collection of all Motors exported </p></td>
                 </tr>
               
             </tbody>
@@ -1392,6 +1600,37 @@ end effector, wheel, etc </p></td>
 
         
       
+        <h3 id="mirabuf.joint.Joints.MotorDefinitionsEntry">Joints.MotorDefinitionsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#mirabuf.motor.Motor">mirabuf.motor.Motor</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="mirabuf.joint.Limits">Limits</h3>
         <p>Limits specify the mechanical range of a given joint.</p><p>TODO: Add units</p>
 
@@ -1421,6 +1660,13 @@ end effector, wheel, etc </p></td>
                   <td><a href="#float">float</a></td>
                   <td></td>
                   <td><p>Velocity Max in m/s^2 (angular for rotational) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>effort</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Effort is the absolute force a joint can apply for a given instant - ROS has a great article on it http://wiki.ros.org/pr2_controller_manager/safety_limits </p></td>
                 </tr>
               
             </tbody>
@@ -2028,6 +2274,218 @@ end effector, wheel, etc </p></td>
     
       
       <div class="file-heading">
+        <h2 id="motor.proto">motor.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="mirabuf.motor.DCMotor">DCMotor</h3>
+        <p>DCMotor Configuration</p><p>Parameters to simulate a DC Electric Motor</p><p>Still needs some more but overall they are most of the parameters we can use</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>reference_url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reference for purchase page or spec sheet </p></td>
+                </tr>
+              
+                <tr>
+                  <td>torque_constant</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>m-Nm/Amp </p></td>
+                </tr>
+              
+                <tr>
+                  <td>emf_constant</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>mV/rad/sec </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resistance</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Resistance of Motor - Optional if other values are known </p></td>
+                </tr>
+              
+                <tr>
+                  <td>maximum_effeciency</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>measure in percentage of 100 - generally around 60 - measured under optimal load </p></td>
+                </tr>
+              
+                <tr>
+                  <td>maximum_power</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>measured in Watts </p></td>
+                </tr>
+              
+                <tr>
+                  <td>duty_cycle</td>
+                  <td><a href="#mirabuf.motor.DutyCycles">DutyCycles</a></td>
+                  <td></td>
+                  <td><p>Stated Duty Cycle of motor </p></td>
+                </tr>
+              
+                <tr>
+                  <td>advanced</td>
+                  <td><a href="#mirabuf.motor.DCMotor.Advanced">DCMotor.Advanced</a></td>
+                  <td></td>
+                  <td><p>Optional data that can give a better relationship to the simulation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.motor.DCMotor.Advanced">DCMotor.Advanced</h3>
+        <p>Information usually found on datasheet</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>free_current</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>measured in AMPs </p></td>
+                </tr>
+              
+                <tr>
+                  <td>free_speed</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>measured in RPM </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stall_current</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>measure in AMPs </p></td>
+                </tr>
+              
+                <tr>
+                  <td>stall_torque</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>measured in in-oz </p></td>
+                </tr>
+              
+                <tr>
+                  <td>input_voltage</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>measured in Volts DC </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resistance_variation</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>between (K * (N / 4)) and (K * ((N-2) / 4)) where N is number of poles - leave at 0 if unknown </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.motor.Motor">Motor</h3>
+        <p>A Motor should determine the relationship between an input and joint motion</p><p>Could represent something like a DC Motor relationship</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dc_motor</td>
+                  <td><a href="#mirabuf.motor.DCMotor">DCMotor</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="mirabuf.motor.DutyCycles">DutyCycles</h3>
+        <p>Duty Cycles for electric motors</p><p>Affects the dynamic output of the motor</p><p>https://www.news.benevelli-group.com/index.php/en/88-what-motor-duty-cycle.html</p><p>These each have associated data we are not going to use right now</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>CONTINUOUS_RUNNING</td>
+                <td>0</td>
+                <td><p>S1</p></td>
+              </tr>
+            
+              <tr>
+                <td>SHORT_TIME</td>
+                <td>1</td>
+                <td><p>S2</p></td>
+              </tr>
+            
+              <tr>
+                <td>INTERMITTENT_PERIODIC</td>
+                <td>2</td>
+                <td><p>S3</p></td>
+              </tr>
+            
+              <tr>
+                <td>CONTINUOUS_PERIODIC</td>
+                <td>3</td>
+                <td><p>S6 Continuous Operation with Periodic Duty</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
         <h2 id="signal.proto">signal.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
@@ -2061,7 +2519,21 @@ end effector, wheel, etc </p></td>
                   <td>device_type</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Is this a PWM, Digital, Analog, I2C, etc. </p></td>
+                  <td><p>Is this a PWM, Digital, Analog, I2C, etc. OLD DEPRECATED </p></td>
+                </tr>
+              
+                <tr>
+                  <td>signal_id</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>ID for a given signal that exists... PWM 2, CANBUS 4 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>device_type_enum</td>
+                  <td><a href="#mirabuf.signal.DeviceType">DeviceType</a></td>
+                  <td></td>
+                  <td><p>Enum for device type that should always be set </p></td>
                 </tr>
               
             </tbody>
@@ -2134,6 +2606,47 @@ end effector, wheel, etc </p></td>
         
       
 
+      
+        <h3 id="mirabuf.signal.DeviceType">DeviceType</h3>
+        <p>DeviceType needs to be a type of device that has a supported connection</p><p>As well as a signal frmae but that can come later</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>PWM</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Digital</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Analog</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>I2C</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CANBUS</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
         <h3 id="mirabuf.signal.IOType">IOType</h3>
         <p>IOType is a way to specify Input or Output.</p>
@@ -2281,7 +2794,7 @@ end effector, wheel, etc </p></td>
                   <td>timestamp</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>unix timestamp </p></td>
+                  <td><p>unix timestamp - this seems unnecessary </p></td>
                 </tr>
               
             </tbody>
@@ -2436,6 +2949,51 @@ however endian becomes an issue </p></td>
                   <td><a href="#mirabuf.Vector3">Vector3</a></td>
                   <td></td>
                   <td><p>non-negative? Vec3 </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.PhysicsRecord">PhysicsRecord</h3>
+        <p>Record for instantiating a moving object</p><p>Useful for storing moving objects</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>spatial_matrix</td>
+                  <td><a href="#float">float</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>angular_velocity</td>
+                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>linear_velocity</td>
+                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -2616,6 +3174,238 @@ however endian becomes an issue </p></td>
             
           </tbody>
         </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="world.proto">world.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="miraworld.AssemblyReference">AssemblyReference</h3>
+        <p>Assembly Reference</p><p>Contains references to an assembly</p><p>Can have a reference to any of the following</p><p>- Cloud (Cloud Fetched Document)</p><p>- Local FS (File System Document Path)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
+                  <td></td>
+                  <td><p>Info contains a unqiue ID for the given instance of an assembly </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cloud</td>
+                  <td><a href="#miraworld.filetypes.CloudFile">filetypes.CloudFile</a></td>
+                  <td></td>
+                  <td><p>Stored as Cloud File to be fetched and referenced </p></td>
+                </tr>
+              
+                <tr>
+                  <td>local</td>
+                  <td><a href="#miraworld.filetypes.LocalFile">filetypes.LocalFile</a></td>
+                  <td></td>
+                  <td><p>Stored as a Local Filesystem File to be requested </p></td>
+                </tr>
+              
+                <tr>
+                  <td>instances</td>
+                  <td><a href="#miraworld.AssemblyReference.Instance">AssemblyReference.Instance</a></td>
+                  <td>repeated</td>
+                  <td><p>The Total number of instances to create in simulation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="miraworld.AssemblyReference.Instance">AssemblyReference.Instance</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
+                  <td></td>
+                  <td><p>Unique Instance ID that can be controlled individually </p></td>
+                </tr>
+              
+                <tr>
+                  <td>physics_record</td>
+                  <td><a href="#miraworld.AssemblyReference.Instance.PhysicsRecordEntry">AssemblyReference.Instance.PhysicsRecordEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Record of object as it is moving in the simulation - for each Joint Group </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transform_override</td>
+                  <td><a href="#mirabuf.Transform">mirabuf.Transform</a></td>
+                  <td></td>
+                  <td><p>Transform in world space that is unique for this instance </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="miraworld.AssemblyReference.Instance.PhysicsRecordEntry">AssemblyReference.Instance.PhysicsRecordEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#mirabuf.PhysicsRecord">mirabuf.PhysicsRecord</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="miraworld.World">World</h3>
+        <p>World Package File</p><p>Contains many assemblies to be packaged together</p><p>This object can be loaded directly or you can load a single Assembly</p><p>Also contains information about how the world is constructed</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>settings</td>
+                  <td><a href="#miraworld.WorldSettings">WorldSettings</a></td>
+                  <td></td>
+                  <td><p>World Settings and Information </p></td>
+                </tr>
+              
+                <tr>
+                  <td>assemblies</td>
+                  <td><a href="#miraworld.AssemblyReference">AssemblyReference</a></td>
+                  <td>repeated</td>
+                  <td><p>Set of assemblies in the world </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="miraworld.WorldSettings">WorldSettings</h3>
+        <p>World Object</p><p>Contains World Simulation settings if present</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>info</td>
+                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
+                  <td></td>
+                  <td><p>Basic information (Identifier, Name, Version) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>the reference ID for whatever kind of graph this is </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gravity</td>
+                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
+                  <td></td>
+                  <td><p>Vec3 for gravity init </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dt</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Time between steps </p></td>
+                </tr>
+              
+                <tr>
+                  <td>velocity_iterations</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Optional for solver </p></td>
+                </tr>
+              
+                <tr>
+                  <td>position_iterations</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Optional for solver </p></td>
+                </tr>
+              
+                <tr>
+                  <td>serialized_frame</td>
+                  <td><a href="#bytes">bytes</a></td>
+                  <td></td>
+                  <td><p>Optional for saving the entire world as a serialized frame </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
       
 
       
