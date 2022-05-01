@@ -28,22 +28,19 @@ package miraworld;
  * Assembly Reference
  * Contains references to an assembly
  * Can have a reference to any of the following
- * - Assembly (In-Document)
  * - Cloud (Cloud Fetched Document)
  * - Local FS (File System Document Path)
- * We should consider doing instancing here
  */
 message AssemblyReference {
     /// Info contains a unqiue ID for the given instance of an assembly
     mirabuf.Info info = 1;
     /// Assembly Type will result in how to assembly exists in the world
     oneof assembly_type {
-        string assembly = 2; /// Stored as a reference to an assembly in this file
-        filetypes.CloudFile cloud = 3; /// Stored as Cloud File to be fetched and referenced
-        filetypes.LocalFile local = 4; /// Stored as a Local Filesystem File to be requested
+        filetypes.CloudFile cloud = 2; /// Stored as Cloud File to be fetched and referenced
+        filetypes.LocalFile local = 3; /// Stored as a Local Filesystem File to be requested
     }
     /// for future assembly_types
-    reserved 5 to 8;
+    reserved 4 to 8;
 
     message Instance {
         mirabuf.Info info = 1;      /// Unique Instance ID that can be controlled individually
