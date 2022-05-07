@@ -801,7 +801,28 @@
                   <td>bodies</td>
                   <td><a href="#mirabuf.Body">Body</a></td>
                   <td>repeated</td>
-                  <td><p>Bodies to populate part </p></td>
+                  <td><p>Mesh Bodies to populate part </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dynamic</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Optional value to state whether an object is a dynamic object in a static assembly - all children are also considered overriden </p></td>
+                </tr>
+              
+                <tr>
+                  <td>friction_override</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Optional value for overriding the friction value 0-1 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mass_override</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Optional value for overriding an indiviaul object&#39;s mass </p></td>
                 </tr>
               
             </tbody>
@@ -2387,7 +2408,7 @@ end effector, wheel, etc </p></td>
                   <td>stall_torque</td>
                   <td><a href="#float">float</a></td>
                   <td></td>
-                  <td><p>measured in in-oz </p></td>
+                  <td><p>measured in Nm </p></td>
                 </tr>
               
                 <tr>
@@ -2516,10 +2537,10 @@ end effector, wheel, etc </p></td>
                 </tr>
               
                 <tr>
-                  <td>device_type</td>
+                  <td>custom_type</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Is this a PWM, Digital, Analog, I2C, etc. OLD DEPRECATED </p></td>
+                  <td><p>The name of a custom input type that is not listed as a device type </p></td>
                 </tr>
               
                 <tr>
@@ -2530,7 +2551,7 @@ end effector, wheel, etc </p></td>
                 </tr>
               
                 <tr>
-                  <td>device_type_enum</td>
+                  <td>device_type</td>
                   <td><a href="#mirabuf.signal.DeviceType">DeviceType</a></td>
                   <td></td>
                   <td><p>Enum for device type that should always be set </p></td>
@@ -2642,6 +2663,12 @@ end effector, wheel, etc </p></td>
               <tr>
                 <td>CANBUS</td>
                 <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CUSTOM</td>
+                <td>5</td>
                 <td><p></p></td>
               </tr>
             
