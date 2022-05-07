@@ -54,7 +54,7 @@ message DCMotor {
         float free_current = 1;     /// measured in AMPs
         uint32 free_speed = 2;      /// measured in RPM
         float stall_current = 3;    /// measure in AMPs
-        float stall_torque = 4;     /// measured in in-oz
+        float stall_torque = 4;     /// measured in Nm
         uint32 input_voltage = 5;   /// measured in Volts DC
         float resistance_variation = 7;     /// between (K * (N / 4)) and (K * ((N-2) / 4)) where N is number of poles - leave at 0 if unknown
     }

@@ -10,11 +10,6 @@ package mirabuf.signal;
  message Signals {
     Info info = 1;  /// Has identifiable data (id, name, version)
     map<string, Signal> signal_map = 2; /// Contains a full collection of symbols
-
-    // 1. Look at each Signal
-    // 2. Decide if it's input or ouput
-    // 3. Decide if it's Digital, Analog, PWM
-    // 4. Then append to an according list / create according item
 }
 
 /**
@@ -36,6 +31,7 @@ enum DeviceType {
     Analog = 2;
     I2C = 3;
     CANBUS = 4;
+    CUSTOM = 5;
 }
 
 /**
@@ -47,8 +43,8 @@ enum DeviceType {
 message Signal {
     Info info = 1;  /// Has identifiable data (id, name, version)
     IOType io = 2;  /// Is this a Input or Output
-    string device_type = 3; /// Is this a PWM, Digital, Analog, I2C, etc. OLD DEPRECATED
+    string custom_type = 3; /// The name of a custom input type that is not listed as a device type
     uint32 signal_id = 4;   /// ID for a given signal that exists... PWM 2, CANBUS 4
-    DeviceType device_type_enum = 5; /// Enum for device type that should always be set
+    DeviceType device_type = 5; /// Enum for device type that should always be set
 }
 

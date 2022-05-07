@@ -67,8 +67,14 @@ message PartDefinition {
     PhysicalProperties physical_data = 2;
     /// Base Transform applied - Most Likely Identity Matrix
     Transform base_transform = 3;
-    /// Bodies to populate part
+    /// Mesh Bodies to populate part
     repeated Body bodies = 4;
+    /// Optional value to state whether an object is a dynamic object in a static assembly - all children are also considered overriden
+    bool dynamic = 5;
+    /// Optional value for overriding the friction value 0-1
+    float friction_override = 6;
+    /// Optional value for overriding an indiviaul object's mass   
+    float mass_override = 7;
 }
 
 /*
