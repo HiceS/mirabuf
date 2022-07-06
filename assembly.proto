@@ -95,6 +95,8 @@ message PartInstance {
     
     string appearance = 6; /// Appearance Reference to link to `Materials->Appearance->Info->id`
     string physical_material = 7; /// Physical Material Reference to link to `Materials->PhysicalMaterial->Info->id`
+
+    bool skipCollider = 8;
 }
 
 /* 
