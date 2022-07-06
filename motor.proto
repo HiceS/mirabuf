@@ -25,7 +25,7 @@ enum DutyCycles {
  * A Motor should determine the relationship between an input and joint motion
  * Could represent something like a DC Motor relationship
  */
- message Motor {
+message Motor {
     Info info = 1;
     oneof motor_type {
         DCMotor dc_motor = 2;
