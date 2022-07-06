@@ -61,6 +61,25 @@ message JointInstance {
 
     // Reference to the Signals as Drivers - use for signal_map in Assembly Data
     string signal_reference = 8;
+
+    // Motion Links to other joints - ways to preserve motion between dynamic objects
+    repeated MotionLink motion_link = 9;
+}
+
+/**
+ * Motion Link Feature
+ * Enables the restriction on a joint to a certain range of motion as it is relative to another joint
+ * This is useful for moving parts restricted by belts and gears
+ */
+message MotionLink {
+    // The Joint that this is linked to
+    string joint_instance = 1;
+
+    // Ratio of motion between joint 1 and joint 2, we assume this is in mm for linear and deg for rotational
+    float ratio = 2;
+
+    // Reverse the relationship - turn in the same or opposite directions - useful when moving axis arent both the same way.
+    bool reversed = 3;
 }
 
 /**
