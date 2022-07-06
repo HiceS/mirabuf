@@ -367,6 +367,10 @@
                   <a href="#mirabuf.motor.Motor"><span class="badge">M</span>Motor</a>
                 </li>
               
+                <li>
+                  <a href="#mirabuf.motor.SimpleMotor"><span class="badge">M</span>SimpleMotor</a>
+                </li>
+              
               
                 <li>
                   <a href="#mirabuf.motor.DutyCycles"><span class="badge">E</span>DutyCycles</a>
@@ -2273,6 +2277,51 @@ end effector, wheel, etc </p></td>
                   <td><a href="#mirabuf.motor.DCMotor">DCMotor</a></td>
                   <td></td>
                   <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>simple_motor</td>
+                  <td><a href="#mirabuf.motor.SimpleMotor">SimpleMotor</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.motor.SimpleMotor">SimpleMotor</h3>
+        <p>SimpleMotor Configuration</p><p>Very easy motor used to simulate joints without specifying a real motor</p><p>Can set braking_constant - stall_torque - and max_velocity</p><p>Assumes you are solving using a velocity constraint for a joint and not a acceleration constraint</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>stall_torque</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Torque at 0 rpm with a inverse linear relationship to max_velocity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max_velocity</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>The target velocity in RPM, will use stall_torque relationship to reach each step </p></td>
+                </tr>
+              
+                <tr>
+                  <td>braking_constant</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>(Optional) 0 - 1, the relationship of stall_torque used to perserve the position of this motor </p></td>
                 </tr>
               
             </tbody>
