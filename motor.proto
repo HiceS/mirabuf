@@ -29,8 +29,24 @@ message Motor {
     Info info = 1;
     oneof motor_type {
         DCMotor dc_motor = 2;
+        SimpleMotor simple_motor = 3;
     }
-    reserved 3 to 5;
+    reserved 4 to 5;
+}
+
+/**
+ * SimpleMotor Configuration
+ * Very easy motor used to simulate joints without specifying a real motor
+ * Can set braking_constant - stall_torque - and max_velocity
+ * Assumes you are solving using a velocity constraint for a joint and not a acceleration constraint
+ */
+message SimpleMotor {
+    /// Torque at 0 rpm with a inverse linear relationship to max_velocity
+    float stall_torque = 1;
+    /// The target velocity in RPM, will use stall_torque relationship to reach each step
+    float max_velocity = 2;
+    /// (Optional) 0 - 1, the relationship of stall_torque used to perserve the position of this motor 
+    float braking_constant = 3;
 }
 
 /**
@@ -39,6 +55,7 @@ message Motor {
  * Still needs some more but overall they are most of the parameters we can use
  */
 message DCMotor {
+    // ADD FREESPIN
     reserved 1;
     string reference_url = 2;   /// Reference for purchase page or spec sheet
     float torque_constant = 3;  /// m-Nm/Amp
