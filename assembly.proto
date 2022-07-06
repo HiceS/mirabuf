@@ -29,6 +29,8 @@ message Assembly {
     GraphContainer joint_hierarchy = 6;
     /// The Transform in space currently
     Transform transform = 7;
+    /// Optional thumbnail saved from Fusion 360 or scraped from previous configuration
+    Thumbnail thumbnail = 8;
 }
 
 /**
@@ -62,6 +64,7 @@ message Parts {
 * Useful for keeping the object counter down in the scene.
 */
 message PartDefinition {
+    /// Information about version - id - name
     Info info = 1;
     /// Physical data associated with Part
     PhysicalProperties physical_data = 2;

@@ -28,27 +28,6 @@ message UserData {
     map<string, string> data = 1; /// e.g. data["wheel"] = "yes"
 }
 
-/**
- * Represents a type of data encoding
- *
- */
-enum DataType {
-    XML = 0;
-    JSON = 1;
-}
-
-/**
- * EncodedData
- *
- * Defines a section of data encoded with a specific type
- * e.g. XML with a type specification
- */
-message EncodedData {
-    DataType type = 1; /// enum for type parsing
-    string data = 2; /// actual data output to parse
-    string schema = 3; /// format specifier to parse it with
-}
-
 message Vector3 {
     float x = 1;
     float y = 2;
@@ -60,7 +39,7 @@ message PhysicalProperties {
     double mass = 2;    /// kg
     double volume = 3;  /// cm^3
     double area = 4;    /// cm^2
-    Vector3 com = 5; /// non-negative? Vec3
+    Vector3 com = 5;    /// non-negative? Vec3
 }
 
 /**
@@ -74,17 +53,6 @@ message Transform {
      *   [00][01][02][03][10][11][12][13][20][21][22][23] 
     */
     repeated float spatial_matrix = 1;
-}
-
-/**
- * Record for instantiating a moving object
- * Useful for storing moving objects
- */
-message PhysicsRecord {
-    string id = 1;
-    repeated float spatial_matrix = 2;
-    Vector3 angular_velocity = 3;
-    Vector3 linear_velocity = 4;
 }
 
 // RGBA in expanded form 0-255
@@ -121,11 +89,19 @@ message Info {
     uint32 version = 3;
 }
 
-message FileTypeInformation {
-    /// full name of file
-    string name = 1;
-    /// extension used in file
-    string extension = 2;
-    /// unix timestamp - this seems unnecessary
-    string timestamp = 3;
+/**
+ * A basic Thumbnail to be encoded in the file
+ * Most of the Time Fusion can encode the file with transparency as PNG not bitmap
+ */
+message Thumbnail {
+    /// Image Width
+    int32 width = 1;
+    /// Image Height
+    int32 height = 2;
+    /// Image Extension - ex. (.png, .bitmap, .jpeg)
+    string extension = 3;
+    /// Transparency - true from fusion when correctly configured
+    bool transparent = 4;
+    /// Data as read from the file in bytes[] form
+    bytes data = 5;
 }
