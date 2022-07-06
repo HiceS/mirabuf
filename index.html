@@ -278,6 +278,10 @@
                 </li>
               
                 <li>
+                  <a href="#mirabuf.joint.MotionLink"><span class="badge">M</span>MotionLink</a>
+                </li>
+              
+                <li>
                   <a href="#mirabuf.joint.PrismaticJoint"><span class="badge">M</span>PrismaticJoint</a>
                 </li>
               
@@ -1323,6 +1327,13 @@ end effector, wheel, etc </p></td>
                   <td><p>Reference to the Signals as Drivers - use for signal_map in Assembly Data </p></td>
                 </tr>
               
+                <tr>
+                  <td>motion_link</td>
+                  <td><a href="#mirabuf.joint.MotionLink">MotionLink</a></td>
+                  <td>repeated</td>
+                  <td><p>Motion Links to other joints - ways to preserve motion between dynamic objects </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -1511,6 +1522,44 @@ end effector, wheel, etc </p></td>
                   <td><a href="#float">float</a></td>
                   <td></td>
                   <td><p>Effort is the absolute force a joint can apply for a given instant - ROS has a great article on it http://wiki.ros.org/pr2_controller_manager/safety_limits </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="mirabuf.joint.MotionLink">MotionLink</h3>
+        <p>Motion Link Feature</p><p>Enables the restriction on a joint to a certain range of motion as it is relative to another joint</p><p>This is useful for moving parts restricted by belts and gears</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>joint_instance</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The Joint that this is linked to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ratio</td>
+                  <td><a href="#float">float</a></td>
+                  <td></td>
+                  <td><p>Ratio of motion between joint 1 and joint 2, we assume this is in mm for linear and deg for rotational </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reversed</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Reverse the relationship - turn in the same or opposite directions - useful when moving axis arent both the same way. </p></td>
                 </tr>
               
             </tbody>
