@@ -230,29 +230,6 @@
         
           
           <li>
-            <a href="#filetypes.proto">filetypes.proto</a>
-            <ul>
-              
-                <li>
-                  <a href="#miraworld.filetypes.CloudFile"><span class="badge">M</span>CloudFile</a>
-                </li>
-              
-                <li>
-                  <a href="#miraworld.filetypes.LocalFile"><span class="badge">M</span>LocalFile</a>
-                </li>
-              
-              
-                <li>
-                  <a href="#miraworld.filetypes.SupportedFileType"><span class="badge">E</span>SupportedFileType</a>
-                </li>
-              
-              
-              
-            </ul>
-          </li>
-        
-          
-          <li>
             <a href="#joint.proto">joint.proto</a>
             <ul>
               
@@ -441,14 +418,6 @@
                 </li>
               
                 <li>
-                  <a href="#mirabuf.EncodedData"><span class="badge">M</span>EncodedData</a>
-                </li>
-              
-                <li>
-                  <a href="#mirabuf.FileTypeInformation"><span class="badge">M</span>FileTypeInformation</a>
-                </li>
-              
-                <li>
                   <a href="#mirabuf.GraphContainer"><span class="badge">M</span>GraphContainer</a>
                 </li>
               
@@ -465,7 +434,7 @@
                 </li>
               
                 <li>
-                  <a href="#mirabuf.PhysicsRecord"><span class="badge">M</span>PhysicsRecord</a>
+                  <a href="#mirabuf.Thumbnail"><span class="badge">M</span>Thumbnail</a>
                 </li>
               
                 <li>
@@ -488,41 +457,6 @@
                 <li>
                   <a href="#mirabuf.Axis"><span class="badge">E</span>Axis</a>
                 </li>
-              
-                <li>
-                  <a href="#mirabuf.DataType"><span class="badge">E</span>DataType</a>
-                </li>
-              
-              
-              
-            </ul>
-          </li>
-        
-          
-          <li>
-            <a href="#world.proto">world.proto</a>
-            <ul>
-              
-                <li>
-                  <a href="#miraworld.AssemblyReference"><span class="badge">M</span>AssemblyReference</a>
-                </li>
-              
-                <li>
-                  <a href="#miraworld.AssemblyReference.Instance"><span class="badge">M</span>AssemblyReference.Instance</a>
-                </li>
-              
-                <li>
-                  <a href="#miraworld.AssemblyReference.Instance.PhysicsRecordEntry"><span class="badge">M</span>AssemblyReference.Instance.PhysicsRecordEntry</a>
-                </li>
-              
-                <li>
-                  <a href="#miraworld.World"><span class="badge">M</span>World</a>
-                </li>
-              
-                <li>
-                  <a href="#miraworld.WorldSettings"><span class="badge">M</span>WorldSettings</a>
-                </li>
-              
               
               
               
@@ -598,6 +532,13 @@
                   <td><a href="#mirabuf.Transform">Transform</a></td>
                   <td></td>
                   <td><p>The Transform in space currently </p></td>
+                </tr>
+              
+                <tr>
+                  <td>thumbnail</td>
+                  <td><a href="#mirabuf.Thumbnail">Thumbnail</a></td>
+                  <td></td>
+                  <td><p>Optional thumbnail saved from Fusion 360 or scraped from previous configuration </p></td>
                 </tr>
               
             </tbody>
@@ -780,7 +721,7 @@
                   <td>info</td>
                   <td><a href="#mirabuf.Info">Info</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Information about version - id - name </p></td>
                 </tr>
               
                 <tr>
@@ -1060,135 +1001,6 @@ end effector, wheel, etc </p></td>
         
       
 
-      
-
-      
-
-      
-    
-      
-      <div class="file-heading">
-        <h2 id="filetypes.proto">filetypes.proto</h2><a href="#title">Top</a>
-      </div>
-      <p></p>
-
-      
-        <h3 id="miraworld.filetypes.CloudFile">CloudFile</h3>
-        <p>Cloud</p><p>Message for defining a CloudFile</p><p>To be fetched from a data server</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>url</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Directly resolvable to the file perhaps - perhaps we should replicate a query </p></td>
-                </tr>
-              
-                <tr>
-                  <td>file_type</td>
-                  <td><a href="#miraworld.filetypes.SupportedFileType">SupportedFileType</a></td>
-                  <td></td>
-                  <td><p>Determine if this is supported for translations </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="miraworld.filetypes.LocalFile">LocalFile</h3>
-        <p>Cloud</p><p>Message for defining a CloudFile</p><p>To be fetched from a data server</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>absolutePath</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Resolvable to a unique place in the File System - Or in a shared FS </p></td>
-                </tr>
-              
-                <tr>
-                  <td>file_type</td>
-                  <td><a href="#miraworld.filetypes.SupportedFileType">SupportedFileType</a></td>
-                  <td></td>
-                  <td><p>Determine if this is supported for translations </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-
-      
-        <h3 id="miraworld.filetypes.SupportedFileType">SupportedFileType</h3>
-        <p>Describes the type of file so we know what to do once we fetch it</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>MIRA</td>
-                <td>0</td>
-                <td><p>Simulation format by Us</p></td>
-              </tr>
-            
-              <tr>
-                <td>GLTF</td>
-                <td>1</td>
-                <td><p>Scene format by Kronos</p></td>
-              </tr>
-            
-              <tr>
-                <td>OBJ</td>
-                <td>2</td>
-                <td><p>Mesh format by Waveform</p></td>
-              </tr>
-            
-              <tr>
-                <td>USD</td>
-                <td>6</td>
-                <td><p>Not supported yet</p></td>
-              </tr>
-            
-              <tr>
-                <td>USDZ</td>
-                <td>7</td>
-                <td><p>Not supported yet</p></td>
-              </tr>
-            
-              <tr>
-                <td>STEP</td>
-                <td>8</td>
-                <td><p>Not supported yet</p></td>
-              </tr>
-            
-              <tr>
-                <td>URDF</td>
-                <td>9</td>
-                <td><p>Not supported yet</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
       
 
       
@@ -2755,82 +2567,6 @@ end effector, wheel, etc </p></td>
 
         
       
-        <h3 id="mirabuf.EncodedData">EncodedData</h3>
-        <p>EncodedData</p><p>Defines a section of data encoded with a specific type</p><p>e.g. XML with a type specification</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>type</td>
-                  <td><a href="#mirabuf.DataType">DataType</a></td>
-                  <td></td>
-                  <td><p>enum for type parsing </p></td>
-                </tr>
-              
-                <tr>
-                  <td>data</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>actual data output to parse </p></td>
-                </tr>
-              
-                <tr>
-                  <td>schema</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>format specifier to parse it with </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="mirabuf.FileTypeInformation">FileTypeInformation</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>full name of file </p></td>
-                </tr>
-              
-                <tr>
-                  <td>extension</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>extension used in file </p></td>
-                </tr>
-              
-                <tr>
-                  <td>timestamp</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>unix timestamp - this seems unnecessary </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="mirabuf.GraphContainer">GraphContainer</h3>
         <p>Top level GraphContainer</p><p>Contains all Graph element roots within</p>
 
@@ -2985,8 +2721,8 @@ however endian becomes an issue </p></td>
 
         
       
-        <h3 id="mirabuf.PhysicsRecord">PhysicsRecord</h3>
-        <p>Record for instantiating a moving object</p><p>Useful for storing moving objects</p>
+        <h3 id="mirabuf.Thumbnail">Thumbnail</h3>
+        <p>A basic Thumbnail to be encoded in the file</p><p>Most of the Time Fusion can encode the file with transparency as PNG not bitmap</p>
 
         
           <table class="field-table">
@@ -2996,31 +2732,38 @@ however endian becomes an issue </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>width</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Image Width </p></td>
+                </tr>
+              
+                <tr>
+                  <td>height</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Image Height </p></td>
+                </tr>
+              
+                <tr>
+                  <td>extension</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Image Extension - ex. (.png, .bitmap, .jpeg) </p></td>
                 </tr>
               
                 <tr>
-                  <td>spatial_matrix</td>
-                  <td><a href="#float">float</a></td>
-                  <td>repeated</td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>angular_velocity</td>
-                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td>transparent</td>
+                  <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Transparency - true from fusion when correctly configured </p></td>
                 </tr>
               
                 <tr>
-                  <td>linear_velocity</td>
-                  <td><a href="#mirabuf.Vector3">Vector3</a></td>
+                  <td>data</td>
+                  <td><a href="#bytes">bytes</a></td>
                   <td></td>
-                  <td><p> </p></td>
+                  <td><p>Data as read from the file in bytes[] form </p></td>
                 </tr>
               
             </tbody>
@@ -3178,261 +2921,6 @@ however endian becomes an issue </p></td>
             
           </tbody>
         </table>
-      
-        <h3 id="mirabuf.DataType">DataType</h3>
-        <p>Represents a type of data encoding</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>XML</td>
-                <td>0</td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>JSON</td>
-                <td>1</td>
-                <td><p></p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
-
-      
-
-      
-    
-      
-      <div class="file-heading">
-        <h2 id="world.proto">world.proto</h2><a href="#title">Top</a>
-      </div>
-      <p></p>
-
-      
-        <h3 id="miraworld.AssemblyReference">AssemblyReference</h3>
-        <p>Assembly Reference</p><p>Contains references to an assembly</p><p>Can have a reference to any of the following</p><p>- Cloud (Cloud Fetched Document)</p><p>- Local FS (File System Document Path)</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>info</td>
-                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
-                  <td></td>
-                  <td><p>Info contains a unqiue ID for the given instance of an assembly </p></td>
-                </tr>
-              
-                <tr>
-                  <td>cloud</td>
-                  <td><a href="#miraworld.filetypes.CloudFile">filetypes.CloudFile</a></td>
-                  <td></td>
-                  <td><p>Stored as Cloud File to be fetched and referenced </p></td>
-                </tr>
-              
-                <tr>
-                  <td>local</td>
-                  <td><a href="#miraworld.filetypes.LocalFile">filetypes.LocalFile</a></td>
-                  <td></td>
-                  <td><p>Stored as a Local Filesystem File to be requested </p></td>
-                </tr>
-              
-                <tr>
-                  <td>instances</td>
-                  <td><a href="#miraworld.AssemblyReference.Instance">AssemblyReference.Instance</a></td>
-                  <td>repeated</td>
-                  <td><p>The Total number of instances to create in simulation </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="miraworld.AssemblyReference.Instance">AssemblyReference.Instance</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>info</td>
-                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
-                  <td></td>
-                  <td><p>Unique Instance ID that can be controlled individually </p></td>
-                </tr>
-              
-                <tr>
-                  <td>physics_record</td>
-                  <td><a href="#miraworld.AssemblyReference.Instance.PhysicsRecordEntry">AssemblyReference.Instance.PhysicsRecordEntry</a></td>
-                  <td>repeated</td>
-                  <td><p>Record of object as it is moving in the simulation - for each Joint Group </p></td>
-                </tr>
-              
-                <tr>
-                  <td>transform_override</td>
-                  <td><a href="#mirabuf.Transform">mirabuf.Transform</a></td>
-                  <td></td>
-                  <td><p>Transform in world space that is unique for this instance </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="miraworld.AssemblyReference.Instance.PhysicsRecordEntry">AssemblyReference.Instance.PhysicsRecordEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#mirabuf.PhysicsRecord">mirabuf.PhysicsRecord</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="miraworld.World">World</h3>
-        <p>World Package File</p><p>Contains many assemblies to be packaged together</p><p>This object can be loaded directly or you can load a single Assembly</p><p>Also contains information about how the world is constructed</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>info</td>
-                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>settings</td>
-                  <td><a href="#miraworld.WorldSettings">WorldSettings</a></td>
-                  <td></td>
-                  <td><p>World Settings and Information </p></td>
-                </tr>
-              
-                <tr>
-                  <td>assemblies</td>
-                  <td><a href="#miraworld.AssemblyReference">AssemblyReference</a></td>
-                  <td>repeated</td>
-                  <td><p>Set of assemblies in the world </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="miraworld.WorldSettings">WorldSettings</h3>
-        <p>World Object</p><p>Contains World Simulation settings if present</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>info</td>
-                  <td><a href="#mirabuf.Info">mirabuf.Info</a></td>
-                  <td></td>
-                  <td><p>Basic information (Identifier, Name, Version) </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>the reference ID for whatever kind of graph this is </p></td>
-                </tr>
-              
-                <tr>
-                  <td>gravity</td>
-                  <td><a href="#mirabuf.Vector3">mirabuf.Vector3</a></td>
-                  <td></td>
-                  <td><p>Vec3 for gravity init </p></td>
-                </tr>
-              
-                <tr>
-                  <td>dt</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p>Time between steps </p></td>
-                </tr>
-              
-                <tr>
-                  <td>velocity_iterations</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p>Optional for solver </p></td>
-                </tr>
-              
-                <tr>
-                  <td>position_iterations</td>
-                  <td><a href="#float">float</a></td>
-                  <td></td>
-                  <td><p>Optional for solver </p></td>
-                </tr>
-              
-                <tr>
-                  <td>serialized_frame</td>
-                  <td><a href="#bytes">bytes</a></td>
-                  <td></td>
-                  <td><p>Optional for saving the entire world as a serialized frame </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-
       
 
       
