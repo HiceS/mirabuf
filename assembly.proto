@@ -100,7 +100,7 @@ message PartInstance {
     /// Physical Material Reference to link to `Materials->PhysicalMaterial->Info->id`
     string physical_material = 7;
     /// Flag that if enabled indicates we should skip generating a collider, defaults to FALSE or undefined
-    bool skipCollider = 8;
+    bool skip_collider = 8;
 }
 
 /* 
