@@ -35,7 +35,7 @@ jobs:
       - run: |
           cp ../../README.md ./README.md
 
-      - run: npm i -g protobufjs
+      - run: npm i -g protobufjs protobufjs-cli
 
       - name: Generate JS Module
         run: pbjs -t static-module -w commonjs -o mirabuf.js ../../*.proto
