@@ -9,6 +9,8 @@
 !libs/python/setup.py
 !libs/python/MANIFEST.in
 
+!libs/rust/**/*
+
 !*/
 
 build/*.proto

@@ -59,6 +59,13 @@ go, c#, swift, rust, node can have additional dependencies
 
 `protoc --rust_out ./libs/rust *.proto`
 
+**NOTE**
+
+In rust the `protoc-gen-rust` plugin now has additional safety and implementation flags for the rust generator. I don't recommend using this but you can run the following commands :
+
+- `protoc --rust_out=experimental-codegen=enabled,kernel=cpp:./libs/rust/src/generated *.proto` - for direct C calls
+- `protoc --rust_out=experimental-codegen=enabled,kernel=upb:./libs/rust/src/generated *.proto` - for embedded mostly
+
 #### Node
 
 To build node you can choose to use the supplied js compiler or use a third party.
