@@ -105,6 +105,7 @@ message Joint {
         RotationalJoint rotational = 5; /// ONEOF rotational joint
         PrismaticJoint prismatic = 6;   /// ONEOF prismatic joint
         CustomJoint custom = 7;         /// ONEOF custom joint
+        BallJoint ball = 10;            /// ONEOF ball joint
         // todo reserve some spaces here or get rid of the oneof entirely
     }
 
@@ -163,11 +164,18 @@ message DOF {
 }
 
 /**
- * CustomJoint is a joint with N degrees of freedom specified.
+ * CustomJoint is a joint with 6 degrees of freedom specified.
  * There should be input validation to handle max freedom case.
- */ 
+ */
 message CustomJoint {
-    repeated DOF dofs = 1; /// A list of degrees of freedom that the joint can contain
+    reserved 1;
+
+    optional DOF translation_x = 2; /// Degree of Freedom along the linear X axis
+    optional DOF translation_y = 3; /// Degree of Freedom along the linear Y axis
+    optional DOF translation_z = 4; /// Degree of Freedom along the linear Z axis
+    optional DOF rotation_x = 5; /// Degree of Freedom along the rotational X axis
+    optional DOF rotation_y = 6; /// Degree of Freedom along the rotational Y axis
+    optional DOF rotation_z = 7; /// Degree of Freedom along the rotational Z axis
 }
 
 /**
